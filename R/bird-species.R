@@ -1,4 +1,23 @@
 
+kaggle_download <- function(name, token = NULL) {
+
+  if ("kaggle" %in% pins::board_list()) {
+    file <- pins::pin_get(board = "kaggle", "gpiosenka/100-bird-species",
+                          extract = FALSE)
+  } else if (!is.null(token)) {
+    pins::board_register_kaggle(name="extradatasets-kaggle", token = token,
+                                cache = tempfile(pattern = "dir"))
+    on.exit({pins::board_deregister("extradatasets-kaggle")}, add = TRUE)
+    file <- pins::pin_get(name,
+                          board = "extradatasets-kaggle",
+                          extract = FALSE)
+  } else {
+    stop("Please register the Kaggle board or pass the `token` parameter.")
+  }
+
+  file
+}
+
 #' Bird species dataset
 #'
 #' Prepares the bird species dataset available in Kaggle [here](https://www.kaggle.com/gpiosenka/100-bird-species)
@@ -24,20 +43,7 @@ bird_species_dataset <- torch::dataset(
 
     if (!fs::dir_exists(data_path) && download) {
 
-      if ("kaggle" %in% pins::board_list()) {
-        file <- pins::pin_get(board = "kaggle", "gpiosenka/100-bird-species",
-                              extract = FALSE)
-      } else if (!is.null(token)) {
-        pins::board_register_kaggle(name="extradatasets-kaggle", token = token,
-                                    cache = tempfile(pattern = "dir"))
-        on.exit({pins::board_deregister("extradatasets-kaggle")}, add = TRUE)
-        file <- pins::pin_get("gpiosenka/100-bird-species",
-                              board = "extradatasets-kaggle",
-                              extract = FALSE)
-      } else {
-        stop("Please register the Kaggle board or pass the `token` parameter.")
-      }
-
+      file <- kaggle_download("gpiosenka/100-bird-species", token)
       fs::dir_create(data_path)
       zip::unzip(file, exdir = data_path)
 
