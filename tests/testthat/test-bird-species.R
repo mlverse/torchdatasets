@@ -1,8 +1,8 @@
 test_that("bird-species works", {
 
   dataset <- bird_species_dataset(
-    root = "~/Downloads/datasets",
-    token = "~/Downloads/kaggle.json",
+    root = tempfile(),
+    token = "kaggle.json",
     download = TRUE
   )
 

@@ -15,8 +15,14 @@ LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 Imports: 
-    torch
+    torch,
+    fs,
+    zip,
+    pins,
+    torchvision
 Suggests: 
     testthat
+Remotes:
+    mlverse/torchvision
 URL: https://github.com/dfalbel/extradatasets
 BugReports: https://github.com/dfalbel/extradatasets/issues
