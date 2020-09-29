@@ -18,3 +18,5 @@ Imports:
     torch
 Suggests: 
     testthat
+URL: https://github.com/dfalbel/extradatasets
+BugReports: https://github.com/dfalbel/extradatasets/issues
