@@ -64,7 +64,7 @@ jobs:
         env:
           KAGGLE: ${{ secrets.KAGGLE }}
         run: |
-          echo "$KAGGLE" > kaggle.json
+          echo "$KAGGLE" > tests/testthat/kaggle.json
 
       - name: Check
         env:
