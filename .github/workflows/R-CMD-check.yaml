@@ -44,6 +44,10 @@ jobs:
           writeLines(sprintf("R-%i.%i", getRversion()$major, getRversion()$minor), ".github/R-version")
         shell: Rscript {0}
 
+      - name: Install magick
+        run: |
+          sudo apt-get install -y libmagick++-dev
+
       - name: Install system dependencies
         if: runner.os == 'Linux'
         run: |
@@ -62,7 +66,7 @@ jobs:
         env:
           KAGGLE: ${{ secrets.KAGGLE }}
         run: |
-          echo "$KAGGLE" > tests/testthat/kaggle.json
+          echo "$KAGGLE \n" > tests/testthat/kaggle.json
 
       - name: Check
         env:
