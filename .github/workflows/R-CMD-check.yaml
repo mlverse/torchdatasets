@@ -45,6 +45,7 @@ jobs:
         shell: Rscript {0}
 
       - name: Install magick
+        if: runner.os == 'Linux'
         run: |
           sudo apt-get install -y libmagick++-dev
 
@@ -66,7 +67,8 @@ jobs:
         env:
           KAGGLE: ${{ secrets.KAGGLE }}
         run: |
-          echo "$KAGGLE \n" > tests/testthat/kaggle.json
+          writeLines(Sys.getenv("KAGGLE"), "kaggle.json")
+        shell: Rscript {0}
 
       - name: Check
         env:
