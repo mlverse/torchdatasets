@@ -67,7 +67,7 @@ jobs:
         env:
           KAGGLE: ${{ secrets.KAGGLE }}
         run: |
-          writeLines(Sys.getenv("KAGGLE"), "kaggle.json")
+          writeLines(Sys.getenv("KAGGLE"), "tests/testthat/kaggle.json")
         shell: Rscript {0}
 
       - name: Check
