@@ -2,10 +2,10 @@
 kaggle_download <- function(name, token = NULL) {
 
   if ("kaggle" %in% pins::board_list()) {
-    file <- pins::pin_get(board = "kaggle", "gpiosenka/100-bird-species",
+    file <- pins::pin_get(board = "kaggle", name,
                           extract = FALSE)
   } else if (!is.null(token)) {
-    pins::board_register_kaggle(name="extradatasets-kaggle", token = token,
+    pins::board_register_kaggle(name=name, token = token,
                                 cache = tempfile(pattern = "dir"))
     on.exit({pins::board_deregister("extradatasets-kaggle")}, add = TRUE)
     file <- pins::pin_get(name,
