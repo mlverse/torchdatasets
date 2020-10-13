@@ -1,4 +1,4 @@
 library(testthat)
-library(extradatasets)
+library(torchdatasets)
 
-test_check("extradatasets")
+test_check("torchdatasets")

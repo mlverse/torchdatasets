@@ -7,9 +7,9 @@ kaggle_download <- function(name, token = NULL) {
   } else if (!is.null(token)) {
     pins::board_register_kaggle(name=name, token = token,
                                 cache = tempfile(pattern = "dir"))
-    on.exit({pins::board_deregister("extradatasets-kaggle")}, add = TRUE)
+    on.exit({pins::board_deregister("torchdatasets-kaggle")}, add = TRUE)
     file <- pins::pin_get(name,
-                          board = "extradatasets-kaggle",
+                          board = "torchdatasets-kaggle",
                           extract = FALSE)
   } else {
     stop("Please register the Kaggle board or pass the `token` parameter.")
