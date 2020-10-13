@@ -1,4 +1,4 @@
-Package: extradatasets
+Package: torchdatasets
 Title: Extra datasets to use with torch
 Version: 0.0.0.9000
 Authors@R: 
