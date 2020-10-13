@@ -24,5 +24,5 @@ Suggests:
     testthat
 Remotes:
     mlverse/torchvision
-URL: https://github.com/dfalbel/torchdatasets
-BugReports: https://github.com/dfalbel/torchdatasets/issues
+URL: https://github.com/mlverse/torchdatasets
+BugReports: https://github.com/mlverse/torchdatasets/issues
