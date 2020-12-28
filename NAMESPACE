@@ -2,3 +2,4 @@
 
 export(bird_species_dataset)
 export(dogs_vs_cats_dataset)
+export(guess_the_correlation_dataset)
