@@ -54,13 +54,11 @@ guess_the_correlation_dataset <- torch::dataset(
 
   .getitem = function(index) {
     force(index)
-    if(length(index) != 1 || index <= 0) value_error("index should be a single integer greater than zero.")
-
     sample <- self$images[index, ]
 
     id <- sample$id
     y <- sample$corr
-    x <- torchvision::magick_loader(file.path(self$.path, paste0(sample$id, ".png")))
+    x <- torchvision::base_loader(file.path(self$.path, paste0(sample$id, ".png")))
     x <- torchvision::transform_to_tensor(x) %>% torchvision::transform_rgb_to_grayscale()
 
     if (!is.null(self$transform))
