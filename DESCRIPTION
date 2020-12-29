@@ -19,7 +19,8 @@ Imports:
     fs,
     zip,
     pins,
-    torchvision
+    torchvision,
+    stringr
 Suggests: 
     testthat
 Remotes:
