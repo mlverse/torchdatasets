@@ -26,7 +26,8 @@ jobs:
 
     env:
       R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
-      TORCH_INSTAL: 1
+      TORCH_INSTALL: 1
+      TORCH_TEST: 1
 
     steps:
       - uses: actions/checkout@v2
