@@ -19,9 +19,11 @@ Imports:
     fs,
     zip,
     pins,
-    torchvision
+    torchvision,
+    stringr
 Suggests: 
-    testthat
+    testthat,
+    readr
 Remotes:
     mlverse/torchvision
 URL: https://github.com/mlverse/torchdatasets
