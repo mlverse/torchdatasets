@@ -26,7 +26,7 @@ guess_the_correlation_dataset <- torch::dataset(
     data_path <- fs::path(root, "guess-the-correlation")
 
     if (!fs::dir_exists(data_path) && download) {
-      file <- kaggle_download("c/guess-the-correlation", token)
+      file <- kaggle_download("athosdamiani/guess-the-correlation", token)
       fs::dir_create(data_path)
       fs::file_copy(stringr::str_subset(file, "csv$"), data_path)
       from <- stringr::str_subset(file, "csv$")
