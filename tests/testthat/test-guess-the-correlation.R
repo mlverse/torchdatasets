@@ -7,5 +7,7 @@ test_that("guess_the_correlation_dataset works", {
   )
 
   expect_length(dataset$.getitem(1), 3)
+  expect_true(dataset$.getitem(1)$y$dtype == torch::torch_float())
+
 
 })
