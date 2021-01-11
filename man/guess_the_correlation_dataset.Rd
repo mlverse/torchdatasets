@@ -19,19 +19,21 @@ guess_the_correlation_dataset(
 \item{token}{a path to the json file obtained in Kaggle. See \href{https://pins.rstudio.com/articles/boards-kaggle.html}{here}
 for additional info.}
 
-\item{split}{string. 'train' or 'submition'}
+\item{split}{string. 'train' or 'submission'}
 
 \item{transform}{function that receives a torch tensor and return another torch tensor, transformed.}
 
 \item{indexes}{set of integers for subsampling (e.g. 1:140000)}
 
-\item{download}{wether to download or not}
+\item{download}{whether to download or not}
 }
 \description{
-Prepares the Guess The Correlation dataset available in Kaggle \href{https://www.kaggle.com/c/guess-the-correlation}{here}
+Prepares the Guess The Correlation dataset available on Kaggle \href{https://www.kaggle.com/c/guess-the-correlation}{here}
 }
 \details{
-We use pins for downloading and managing authetication.
+Note: To be able download this dataset, you need to \href{https://www.kaggle.com/c/guess-the-correlation/rules}{accept the competition rules} on Kaggle.
+
+We use pins for downloading and managing authentication.
 If you want to download the dataset you need to register the Kaggle board as
 described in \href{https://pins.rstudio.com/articles/boards-kaggle.html}{this link}.
 or pass the \code{token} argument.
