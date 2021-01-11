@@ -1,8 +1,10 @@
 #' Guess The Correlation dataset
 #'
-#' Prepares the Guess The Correlation dataset available in Kaggle [here](https://www.kaggle.com/c/guess-the-correlation)
+#' Prepares the Guess The Correlation dataset available on Kaggle [here](https://www.kaggle.com/c/guess-the-correlation)
 #'
-#' We use pins for downloading and managing authetication.
+#' Note: To be able download this dataset, you need to [accept the competition rules](https://www.kaggle.com/c/guess-the-correlation/rules) on Kaggle.
+#'
+#' We use pins for downloading and managing authentication.
 #' If you want to download the dataset you need to register the Kaggle board as
 #' described in [this link](https://pins.rstudio.com/articles/boards-kaggle.html).
 #' or pass the `token` argument.
@@ -10,10 +12,10 @@
 #' @param root path to the data location
 #' @param token a path to the json file obtained in Kaggle. See [here](https://pins.rstudio.com/articles/boards-kaggle.html)
 #'   for additional info.
-#' @param split string. 'train' or 'submition'
+#' @param split string. 'train' or 'submission'
 #' @param transform function that receives a torch tensor and return another torch tensor, transformed.
 #' @param indexes set of integers for subsampling (e.g. 1:140000)
-#' @param download wether to download or not
+#' @param download whether to download or not
 #'
 #' @export
 guess_the_correlation_dataset <- torch::dataset(
@@ -26,7 +28,7 @@ guess_the_correlation_dataset <- torch::dataset(
     data_path <- fs::path(root, "guess-the-correlation")
 
     if (!fs::dir_exists(data_path) && download) {
-      file <- kaggle_download("athosdamiani/guess-the-correlation", token)
+      file <- kaggle_download("c/guess-the-correlation", token)
       fs::dir_create(data_path)
       fs::file_copy(stringr::str_subset(file, "csv$"), data_path)
       from <- stringr::str_subset(file, "csv$")
@@ -45,7 +47,7 @@ guess_the_correlation_dataset <- torch::dataset(
       self$images <- readr::read_csv(fs::path(data_path, "train.csv"), col_types = c("cn"))
       if(!is.null(indexes)) self$images <- self$images[indexes, ]
       self$.path <- file.path(data_path, "train_imgs")
-    } else if(split == "submition") {
+    } else if(split == "submission") {
       self$images <- readr::read_csv(fs::path(data_path, "example_submition.csv"), col_types = c("cn"))
       self$images$corr <- NA_real_
       self$.path <- file.path(data_path, "test_imgs")
