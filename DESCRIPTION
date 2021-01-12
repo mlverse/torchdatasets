@@ -26,5 +26,5 @@ Suggests:
     readr
 Remotes:
     mlverse/torchvision
-URL: https://github.com/mlverse/torchdatasets
+URL: https://mlverse.github.io/torchdatasets, https://github.com/mlverse/torchdatasets
 BugReports: https://github.com/mlverse/torchdatasets/issues
