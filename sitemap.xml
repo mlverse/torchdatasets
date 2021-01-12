@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://mlverse.github.io/torchdatasets/index.html</loc>
+  </url>
+  <url>
+    <loc>https://mlverse.github.io/torchdatasets/reference/bird_species_dataset.html</loc>
+  </url>
+  <url>
+    <loc>https://mlverse.github.io/torchdatasets/reference/dogs_vs_cats_dataset.html</loc>
+  </url>
+  <url>
+    <loc>https://mlverse.github.io/torchdatasets/reference/guess_the_correlation_dataset.html</loc>
+  </url>
+</urlset>
