@@ -40,7 +40,9 @@
 
 
 <meta property="og:title" content="Guess The Correlation dataset — guess_the_correlation_dataset" />
-<meta property="og:description" content="Prepares the Guess The Correlation dataset available on Kaggle here" />
+<meta property="og:description" content="Prepares the Guess The Correlation dataset available on Kaggle here
+A copy of this dataset is hosted in a public Google Cloud
+bucket so you don't need to authenticate." />
 
 
 
@@ -114,12 +116,13 @@
     </div>
 
     <div class="ref-description">
-    <p>Prepares the Guess The Correlation dataset available on Kaggle <a href='https://www.kaggle.com/c/guess-the-correlation'>here</a></p>
+    <p>Prepares the Guess The Correlation dataset available on Kaggle <a href='https://www.kaggle.com/c/guess-the-correlation'>here</a>
+A copy of this dataset is hosted in a public Google Cloud
+bucket so you don't need to authenticate.</p>
     </div>
 
     <pre class="usage"><span class='fu'>guess_the_correlation_dataset</span><span class='op'>(</span>
   <span class='va'>root</span>,
-  token <span class='op'>=</span> <span class='cn'>NULL</span>,
   split <span class='op'>=</span> <span class='st'>"train"</span>,
   transform <span class='op'>=</span> <span class='cn'>NULL</span>,
   indexes <span class='op'>=</span> <span class='cn'>NULL</span>,
@@ -132,11 +135,6 @@
     <tr>
       <th>root</th>
       <td><p>path to the data location</p></td>
-    </tr>
-    <tr>
-      <th>token</th>
-      <td><p>a path to the json file obtained in Kaggle. See <a href='https://pins.rstudio.com/articles/boards-kaggle.html'>here</a>
-for additional info.</p></td>
     </tr>
     <tr>
       <th>split</th>
@@ -156,13 +154,9 @@ for additional info.</p></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Note: To be able download this dataset, you need to <a href='https://www.kaggle.com/c/guess-the-correlation/rules'>accept the competition rules</a> on Kaggle.</p>
-<p>We use pins for downloading and managing authentication.
-If you want to download the dataset you need to register the Kaggle board as
-described in <a href='https://pins.rstudio.com/articles/boards-kaggle.html'>this link</a>.
-or pass the <code>token</code> argument.</p>
+    <p>A torch dataset that can be consumed with <code><a href='https://torch.mlverse.org/docs/reference/dataloader.html'>torch::dataloader()</a></code>.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
