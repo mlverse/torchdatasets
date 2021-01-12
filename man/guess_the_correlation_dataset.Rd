@@ -6,7 +6,6 @@
 \usage{
 guess_the_correlation_dataset(
   root,
-  token = NULL,
   split = "train",
   transform = NULL,
   indexes = NULL,
@@ -16,9 +15,6 @@ guess_the_correlation_dataset(
 \arguments{
 \item{root}{path to the data location}
 
-\item{token}{a path to the json file obtained in Kaggle. See \href{https://pins.rstudio.com/articles/boards-kaggle.html}{here}
-for additional info.}
-
 \item{split}{string. 'train' or 'submission'}
 
 \item{transform}{function that receives a torch tensor and return another torch tensor, transformed.}
@@ -27,14 +23,11 @@ for additional info.}
 
 \item{download}{whether to download or not}
 }
+\value{
+A torch dataset that can be consumed with \code{\link[torch:dataloader]{torch::dataloader()}}.
+}
 \description{
 Prepares the Guess The Correlation dataset available on Kaggle \href{https://www.kaggle.com/c/guess-the-correlation}{here}
-}
-\details{
-Note: To be able download this dataset, you need to \href{https://www.kaggle.com/c/guess-the-correlation/rules}{accept the competition rules} on Kaggle.
-
-We use pins for downloading and managing authentication.
-If you want to download the dataset you need to register the Kaggle board as
-described in \href{https://pins.rstudio.com/articles/boards-kaggle.html}{this link}.
-or pass the \code{token} argument.
+A copy of this dataset is hosted in a public Google Cloud
+bucket so you don't need to authenticate.
 }
