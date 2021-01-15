@@ -1,26 +1,21 @@
 #' Guess The Correlation dataset
 #'
 #' Prepares the Guess The Correlation dataset available on Kaggle [here](https://www.kaggle.com/c/guess-the-correlation)
-#'
-#' Note: To be able download this dataset, you need to [accept the competition rules](https://www.kaggle.com/c/guess-the-correlation/rules) on Kaggle.
-#'
-#' We use pins for downloading and managing authentication.
-#' If you want to download the dataset you need to register the Kaggle board as
-#' described in [this link](https://pins.rstudio.com/articles/boards-kaggle.html).
-#' or pass the `token` argument.
+#' A copy of this dataset is hosted in a public Google Cloud
+#' bucket so you don't need to authenticate.
 #'
 #' @param root path to the data location
-#' @param token a path to the json file obtained in Kaggle. See [here](https://pins.rstudio.com/articles/boards-kaggle.html)
-#'   for additional info.
 #' @param split string. 'train' or 'submission'
 #' @param transform function that receives a torch tensor and return another torch tensor, transformed.
 #' @param indexes set of integers for subsampling (e.g. 1:140000)
 #' @param download whether to download or not
 #'
+#' @return A torch dataset that can be consumed with [torch::dataloader()].
+#'
 #' @export
 guess_the_correlation_dataset <- torch::dataset(
   "GuessTheCorrelation",
-  initialize = function(root, token = NULL, split = "train", transform = NULL, indexes = NULL, download = FALSE) {
+  initialize = function(root, split = "train", transform = NULL, indexes = NULL, download = FALSE) {
 
     self$transform <- transform
 
@@ -28,14 +23,15 @@ guess_the_correlation_dataset <- torch::dataset(
     data_path <- fs::path(root, "guess-the-correlation")
 
     if (!fs::dir_exists(data_path) && download) {
-      file <- kaggle_download("c/guess-the-correlation", token)
       fs::dir_create(data_path)
-      fs::file_copy(stringr::str_subset(file, "csv$"), data_path)
-      from <- stringr::str_subset(file, "csv$")
-      to <- gsub("csv", "zip", from)
-      file.rename(from, to)
-
-      sapply(c(to, stringr::str_subset(file, "zip")), function(x) zip::unzip(x, exdir = data_path))
+      zip_path <- fs::path(data_path, "guess-the-correlation.zip")
+      download.file(
+        "https://storage.googleapis.com/torch-datasets/guess-the-correlation.zip",
+        destfile = zip_path
+      )
+      zip::unzip(zip_path, exdir = data_path)
+      zip::unzip(fs::path(data_path, "train_imgs.zip"), exdir = data_path)
+      zip::unzip(fs::path(data_path, "test_imgs.zip"), exdir = data_path)
     }
 
     if (!fs::dir_exists(data_path))
