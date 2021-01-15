@@ -5,6 +5,8 @@
 #'
 #' @inheritParams bird_species_dataset
 #'
+#' @return A [torch::dataset()] ready to be used with dataloaders.
+#'
 #' @export
 dogs_vs_cats_dataset <- torch::dataset(
   inherit = torchvision::image_folder_dataset,

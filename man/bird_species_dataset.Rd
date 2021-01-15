@@ -24,6 +24,9 @@ for additional info.}
 
 \item{...}{other arguments passed to \code{\link[torchvision:image_folder_dataset]{torchvision::image_folder_dataset()}}.}
 }
+\value{
+A \code{\link[torch:dataset]{torch::dataset()}} ready to be used with dataloaders.
+}
 \description{
 Prepares the bird species dataset available in Kaggle \href{https://www.kaggle.com/gpiosenka/100-bird-species}{here}
 }
