@@ -31,3 +31,9 @@ Prepares the Guess The Correlation dataset available on Kaggle \href{https://www
 A copy of this dataset is hosted in a public Google Cloud
 bucket so you don't need to authenticate.
 }
+\examples{
+if (torch::torch_is_installed()) {
+gtc <- guess_the_correlation_dataset("./data")
+length(gtc)
+}
+}

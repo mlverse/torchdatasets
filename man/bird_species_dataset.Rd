@@ -36,3 +36,9 @@ If you want to download the dataset you need to register the Kaggle board as
 described in \href{https://pins.rstudio.com/articles/boards-kaggle.html}{this link}.
 or pass the \code{token} argument.
 }
+\examples{
+if (torch::torch_is_installed()) {
+birds <- bird_species_dataset("./data", token = "path/to/kaggle.json")
+length(birds)
+}
+}

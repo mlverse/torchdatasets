@@ -11,7 +11,11 @@
 #' @param download whether to download or not
 #'
 #' @return A torch dataset that can be consumed with [torch::dataloader()].
-#'
+#' @examples
+#' if (torch::torch_is_installed()) {
+#' gtc <- guess_the_correlation_dataset("./data")
+#' length(gtc)
+#' }
 #' @export
 guess_the_correlation_dataset <- torch::dataset(
   "GuessTheCorrelation",
