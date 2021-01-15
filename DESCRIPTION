@@ -12,7 +12,7 @@ Authors@R:
     )
 Description: Provides datasets in a format that can be easily consumed by torch 'dataloaders'.
   Handles data downloading from multiple sources, caching and pre-processing so
-  user can focus only on the model implementation.
+  users can focus only on their model implementations.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
@@ -28,5 +28,5 @@ Imports:
 Suggests: 
     testthat,
     readr
-URL: https://mlverse.github.io/torchdatasets, https://github.com/mlverse/torchdatasets
+URL: https://mlverse.github.io/torchdatasets/, https://github.com/mlverse/torchdatasets
 BugReports: https://github.com/mlverse/torchdatasets/issues

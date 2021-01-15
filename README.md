@@ -2,7 +2,7 @@
 
 <!-- badges: start -->
 
-[![R-CMD-check](https://github.com/dfalbel/extradatasets/workflows/R-CMD-check/badge.svg)](https://github.com/dfalbel/extradatasets/actions) [![CRAN status](https://www.r-pkg.org/badges/version/torchdatasets)](https://CRAN.R-project.org/package=torchdatasets)
+[![R-CMD-check](https://github.com/mlverse/torchdatasets/workflows/R-CMD-check/badge.svg)](https://github.com/mlverse/torchdatasets/actions) [![CRAN status](https://www.r-pkg.org/badges/version/torchdatasets)](https://CRAN.R-project.org/package=torchdatasets)
 
 <!-- badges: end -->
 
