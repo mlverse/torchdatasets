@@ -7,7 +7,7 @@
 #'
 #' @return A [torch::dataset()] ready to be used with dataloaders.
 #' @examples
-#' if (torch::torch_is_installed()) {
+#' if (torch::torch_is_installed() && FALSE) {
 #' dogs_cats <- dogs_vs_cats_dataset("./data", token = "path/to/kaggle.json",
 #'                                   download = TRUE)
 #' length(dogs_cats)

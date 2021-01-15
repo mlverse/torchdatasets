@@ -32,7 +32,7 @@ A copy of this dataset is hosted in a public Google Cloud
 bucket so you don't need to authenticate.
 }
 \examples{
-if (torch::torch_is_installed()) {
+if (torch::torch_is_installed() && FALSE) {
 gtc <- guess_the_correlation_dataset("./data", download = TRUE)
 length(gtc)
 }

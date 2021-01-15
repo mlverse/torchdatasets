@@ -37,7 +37,7 @@ described in \href{https://pins.rstudio.com/articles/boards-kaggle.html}{this li
 or pass the \code{token} argument.
 }
 \examples{
-if (torch::torch_is_installed()) {
+if (torch::torch_is_installed() && FALSE) {
 birds <- bird_species_dataset("./data", token = "path/to/kaggle.json",
                               download = TRUE)
 length(birds)
