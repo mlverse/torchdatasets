@@ -33,7 +33,7 @@ bucket so you don't need to authenticate.
 }
 \examples{
 if (torch::torch_is_installed()) {
-gtc <- guess_the_correlation_dataset("./data")
+gtc <- guess_the_correlation_dataset("./data", download = TRUE)
 length(gtc)
 }
 }

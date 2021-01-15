@@ -13,7 +13,7 @@
 #' @return A torch dataset that can be consumed with [torch::dataloader()].
 #' @examples
 #' if (torch::torch_is_installed()) {
-#' gtc <- guess_the_correlation_dataset("./data")
+#' gtc <- guess_the_correlation_dataset("./data", download = TRUE)
 #' length(gtc)
 #' }
 #' @export

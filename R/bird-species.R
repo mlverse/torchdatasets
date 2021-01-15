@@ -38,7 +38,8 @@ kaggle_download <- function(name, token = NULL) {
 #'
 #' @examples
 #' if (torch::torch_is_installed()) {
-#' birds <- bird_species_dataset("./data", token = "path/to/kaggle.json")
+#' birds <- bird_species_dataset("./data", token = "path/to/kaggle.json",
+#'                               download = TRUE)
 #' length(birds)
 #' }
 #' @export

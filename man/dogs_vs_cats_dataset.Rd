@@ -25,7 +25,8 @@ Prepares the dog vs cats dataset available in Kaggle
 }
 \examples{
 if (torch::torch_is_installed()) {
-dogs_cats <- dogs_vs_cats_dataset("./data", token = "path/to/kaggle.json")
+dogs_cats <- dogs_vs_cats_dataset("./data", token = "path/to/kaggle.json",
+                                  download = TRUE)
 length(dogs_cats)
 }
 }
