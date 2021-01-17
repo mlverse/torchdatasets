@@ -8,6 +8,7 @@ guess_the_correlation_dataset(
   root,
   split = "train",
   transform = NULL,
+  target_transform = NULL,
   indexes = NULL,
   download = FALSE
 )
@@ -17,7 +18,9 @@ guess_the_correlation_dataset(
 
 \item{split}{string. 'train' or 'submission'}
 
-\item{transform}{function that receives a torch tensor and return another torch tensor, transformed.}
+\item{transform}{function that takes a torch tensor representing an image and return another tensor, transformed.}
+
+\item{target_transform}{function that takes a scalar torch tensor and returns another tensor, transformed.}
 
 \item{indexes}{set of integers for subsampling (e.g. 1:140000)}
 
