@@ -125,6 +125,7 @@ bucket so you don't need to authenticate.</p>
   <span class='va'>root</span>,
   split <span class='op'>=</span> <span class='st'>"train"</span>,
   transform <span class='op'>=</span> <span class='cn'>NULL</span>,
+  target_transform <span class='op'>=</span> <span class='cn'>NULL</span>,
   indexes <span class='op'>=</span> <span class='cn'>NULL</span>,
   download <span class='op'>=</span> <span class='cn'>FALSE</span>
 <span class='op'>)</span></pre>
@@ -142,7 +143,11 @@ bucket so you don't need to authenticate.</p>
     </tr>
     <tr>
       <th>transform</th>
-      <td><p>function that receives a torch tensor and return another torch tensor, transformed.</p></td>
+      <td><p>function that takes a torch tensor representing an image and return another tensor, transformed.</p></td>
+    </tr>
+    <tr>
+      <th>target_transform</th>
+      <td><p>function that takes a scalar torch tensor and returns another tensor, transformed.</p></td>
     </tr>
     <tr>
       <th>indexes</th>
