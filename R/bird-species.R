@@ -34,6 +34,14 @@ kaggle_download <- function(name, token = NULL) {
 #' @param download wether to download or not
 #' @param ... other arguments passed to [torchvision::image_folder_dataset()].
 #'
+#' @return A [torch::dataset()] ready to be used with dataloaders.
+#'
+#' @examples
+#' if (torch::torch_is_installed() && FALSE) {
+#' birds <- bird_species_dataset("./data", token = "path/to/kaggle.json",
+#'                               download = TRUE)
+#' length(birds)
+#' }
 #' @export
 bird_species_dataset <- torch::dataset(
   inherit = torchvision::image_folder_dataset,

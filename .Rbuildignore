@@ -2,3 +2,10 @@
 ^\.Rproj\.user$
 ^\.github$
 ^LICENSE\.md$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
+^cran-comments\.md$
+^gtc$
+^examples$
+^CRAN-RELEASE$

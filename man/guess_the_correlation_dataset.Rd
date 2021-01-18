@@ -6,9 +6,9 @@
 \usage{
 guess_the_correlation_dataset(
   root,
-  token = NULL,
   split = "train",
   transform = NULL,
+  target_transform = NULL,
   indexes = NULL,
   download = FALSE
 )
@@ -16,23 +16,27 @@ guess_the_correlation_dataset(
 \arguments{
 \item{root}{path to the data location}
 
-\item{token}{a path to the json file obtained in Kaggle. See \href{https://pins.rstudio.com/articles/boards-kaggle.html}{here}
-for additional info.}
+\item{split}{string. 'train' or 'submission'}
 
-\item{split}{string. 'train' or 'submition'}
+\item{transform}{function that takes a torch tensor representing an image and return another tensor, transformed.}
 
-\item{transform}{function that receives a torch tensor and return another torch tensor, transformed.}
+\item{target_transform}{function that takes a scalar torch tensor and returns another tensor, transformed.}
 
 \item{indexes}{set of integers for subsampling (e.g. 1:140000)}
 
-\item{download}{wether to download or not}
+\item{download}{whether to download or not}
+}
+\value{
+A torch dataset that can be consumed with \code{\link[torch:dataloader]{torch::dataloader()}}.
 }
 \description{
-Prepares the Guess The Correlation dataset available in Kaggle \href{https://www.kaggle.com/c/guess-the-correlation}{here}
+Prepares the Guess The Correlation dataset available on Kaggle \href{https://www.kaggle.com/c/guess-the-correlation}{here}
+A copy of this dataset is hosted in a public Google Cloud
+bucket so you don't need to authenticate.
 }
-\details{
-We use pins for downloading and managing authetication.
-If you want to download the dataset you need to register the Kaggle board as
-described in \href{https://pins.rstudio.com/articles/boards-kaggle.html}{this link}.
-or pass the \code{token} argument.
+\examples{
+if (torch::torch_is_installed() && FALSE) {
+gtc <- guess_the_correlation_dataset("./data", download = TRUE)
+length(gtc)
+}
 }

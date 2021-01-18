@@ -1,14 +1,18 @@
 Package: torchdatasets
-Title: Extra datasets to use with torch
-Version: 0.0.0.9000
+Title: Ready to Use Extra Datasets for Torch
+Version: 0.0.1
 Authors@R: 
+    c(
     person(given = "Daniel",
            family = "Falbel",
            role = c("aut", "cre"),
            email = "daniel@rstudio.com"
-           )
-Description: Provides datasets in a format that can be easily used by the torch
-    package.
+           ),
+    person(family = "RStudio", role = c("cph"))
+    )
+Description: Provides datasets in a format that can be easily consumed by torch 'dataloaders'.
+  Handles data downloading from multiple sources, caching and pre-processing so
+  users can focus only on their model implementations.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
@@ -19,10 +23,10 @@ Imports:
     fs,
     zip,
     pins,
-    torchvision
+    torchvision,
+    stringr
 Suggests: 
-    testthat
-Remotes:
-    mlverse/torchvision
-URL: https://github.com/mlverse/torchdatasets
+    testthat,
+    readr
+URL: https://mlverse.github.io/torchdatasets/, https://github.com/mlverse/torchdatasets
 BugReports: https://github.com/mlverse/torchdatasets/issues

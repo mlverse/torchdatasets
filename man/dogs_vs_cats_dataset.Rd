@@ -16,7 +16,17 @@ for additional info.}
 
 \item{...}{other arguments passed to \code{\link[torchvision:image_folder_dataset]{torchvision::image_folder_dataset()}}.}
 }
+\value{
+A \code{\link[torch:dataset]{torch::dataset()}} ready to be used with dataloaders.
+}
 \description{
 Prepares the dog vs cats dataset available in Kaggle
 \href{https://www.kaggle.com/c/dogs-vs-cats}{here}
+}
+\examples{
+if (torch::torch_is_installed() && FALSE) {
+dogs_cats <- dogs_vs_cats_dataset("./data", token = "path/to/kaggle.json",
+                                  download = TRUE)
+length(dogs_cats)
+}
 }

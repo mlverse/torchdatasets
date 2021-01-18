@@ -24,6 +24,9 @@ for additional info.}
 
 \item{...}{other arguments passed to \code{\link[torchvision:image_folder_dataset]{torchvision::image_folder_dataset()}}.}
 }
+\value{
+A \code{\link[torch:dataset]{torch::dataset()}} ready to be used with dataloaders.
+}
 \description{
 Prepares the bird species dataset available in Kaggle \href{https://www.kaggle.com/gpiosenka/100-bird-species}{here}
 }
@@ -32,4 +35,11 @@ We use pins for downloading and managing authetication.
 If you want to download the dataset you need to register the Kaggle board as
 described in \href{https://pins.rstudio.com/articles/boards-kaggle.html}{this link}.
 or pass the \code{token} argument.
+}
+\examples{
+if (torch::torch_is_installed() && FALSE) {
+birds <- bird_species_dataset("./data", token = "path/to/kaggle.json",
+                              download = TRUE)
+length(birds)
+}
 }

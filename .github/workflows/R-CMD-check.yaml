@@ -7,6 +7,8 @@ on:
   pull_request:
     branches:
       - master
+  schedule:
+    - cron: "0 1 * * *"
 
 name: R-CMD-check
 
@@ -26,7 +28,8 @@ jobs:
 
     env:
       R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
-      TORCH_INSTAL: 1
+      TORCH_INSTALL: 1
+      TORCH_TEST: 1
 
     steps:
       - uses: actions/checkout@v2
@@ -67,7 +70,7 @@ jobs:
         env:
           KAGGLE: ${{ secrets.KAGGLE }}
         run: |
-          writeLines(Sys.getenv("KAGGLE"), "tests/testthat/kaggle.json")
+          writeLines(c(Sys.getenv("KAGGLE"), "\n"), "tests/testthat/kaggle.json")
         shell: Rscript {0}
 
       - name: Check

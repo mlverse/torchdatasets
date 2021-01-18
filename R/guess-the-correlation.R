@@ -1,39 +1,43 @@
 #' Guess The Correlation dataset
 #'
-#' Prepares the Guess The Correlation dataset available in Kaggle [here](https://www.kaggle.com/c/guess-the-correlation)
-#'
-#' We use pins for downloading and managing authetication.
-#' If you want to download the dataset you need to register the Kaggle board as
-#' described in [this link](https://pins.rstudio.com/articles/boards-kaggle.html).
-#' or pass the `token` argument.
+#' Prepares the Guess The Correlation dataset available on Kaggle [here](https://www.kaggle.com/c/guess-the-correlation)
+#' A copy of this dataset is hosted in a public Google Cloud
+#' bucket so you don't need to authenticate.
 #'
 #' @param root path to the data location
-#' @param token a path to the json file obtained in Kaggle. See [here](https://pins.rstudio.com/articles/boards-kaggle.html)
-#'   for additional info.
-#' @param split string. 'train' or 'submition'
-#' @param transform function that receives a torch tensor and return another torch tensor, transformed.
+#' @param split string. 'train' or 'submission'
+#' @param transform function that takes a torch tensor representing an image and return another tensor, transformed.
+#' @param target_transform function that takes a scalar torch tensor and returns another tensor, transformed.
 #' @param indexes set of integers for subsampling (e.g. 1:140000)
-#' @param download wether to download or not
+#' @param download whether to download or not
 #'
+#' @return A torch dataset that can be consumed with [torch::dataloader()].
+#' @examples
+#' if (torch::torch_is_installed() && FALSE) {
+#' gtc <- guess_the_correlation_dataset("./data", download = TRUE)
+#' length(gtc)
+#' }
 #' @export
 guess_the_correlation_dataset <- torch::dataset(
   "GuessTheCorrelation",
-  initialize = function(root, token = NULL, split = "train", transform = NULL, indexes = NULL, download = FALSE) {
+  initialize = function(root, split = "train", transform = NULL, target_transform = NULL, indexes = NULL, download = FALSE) {
 
     self$transform <- transform
+    self$target_transform <- target_transform
 
     # donwload ----------------------------------------------------------
     data_path <- fs::path(root, "guess-the-correlation")
 
     if (!fs::dir_exists(data_path) && download) {
-      file <- kaggle_download("c/guess-the-correlation", token)
       fs::dir_create(data_path)
-      fs::file_copy(stringr::str_subset(file, "csv$"), data_path)
-      from <- stringr::str_subset(file, "csv$")
-      to <- gsub("csv", "zip", from)
-      file.rename(from, to)
-
-      sapply(c(to, stringr::str_subset(file, "zip")), function(x) zip::unzip(x, exdir = data_path))
+      zip_path <- fs::path(data_path, "guess-the-correlation.zip")
+      download.file(
+        "https://storage.googleapis.com/torch-datasets/guess-the-correlation.zip",
+        destfile = zip_path
+      )
+      zip::unzip(zip_path, exdir = data_path)
+      zip::unzip(fs::path(data_path, "train_imgs.zip"), exdir = data_path)
+      zip::unzip(fs::path(data_path, "test_imgs.zip"), exdir = data_path)
     }
 
     if (!fs::dir_exists(data_path))
@@ -45,7 +49,7 @@ guess_the_correlation_dataset <- torch::dataset(
       self$images <- readr::read_csv(fs::path(data_path, "train.csv"), col_types = c("cn"))
       if(!is.null(indexes)) self$images <- self$images[indexes, ]
       self$.path <- file.path(data_path, "train_imgs")
-    } else if(split == "submition") {
+    } else if(split == "submission") {
       self$images <- readr::read_csv(fs::path(data_path, "example_submition.csv"), col_types = c("cn"))
       self$images$corr <- NA_real_
       self$.path <- file.path(data_path, "test_imgs")
@@ -53,16 +57,20 @@ guess_the_correlation_dataset <- torch::dataset(
   },
 
   .getitem = function(index) {
-    force(index)
-    sample <- self$images[index, ]
 
+    force(index)
+
+    sample <- self$images[index, ]
     id <- sample$id
-    y <- sample$corr
     x <- torchvision::base_loader(file.path(self$.path, paste0(sample$id, ".png")))
     x <- torchvision::transform_to_tensor(x) %>% torchvision::transform_rgb_to_grayscale()
 
     if (!is.null(self$transform))
       x <- self$transform(x)
+
+    y <- torch::torch_scalar_tensor(sample$corr)
+    if (!is.null(self$target_transform))
+      y <- self$target_transform(y)
 
     return(list(x = x, y = y, id = id))
   },
