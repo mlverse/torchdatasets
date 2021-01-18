@@ -62,7 +62,7 @@ guess_the_correlation_dataset <- torch::dataset(
     x <- torchvision::transform_to_tensor(x) %>% torchvision::transform_rgb_to_grayscale()
 
     if (!is.null(self$transform))
-      sample <- self$transform(sample)
+      x <- self$transform(x)
 
     return(list(x = x, y = y, id = id))
   },
