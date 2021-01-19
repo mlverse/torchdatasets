@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Dog vs cats dataset — dogs_vs_cats_dataset • torchdatasets</title>
+<title>Changelog • torchdatasets</title>
 
 
 <!-- jquery -->
@@ -39,9 +39,7 @@
 
 
 
-<meta property="og:title" content="Dog vs cats dataset — dogs_vs_cats_dataset" />
-<meta property="og:description" content="Prepares the dog vs cats dataset available in Kaggle
-here" />
+<meta property="og:title" content="Changelog" />
 
 
 
@@ -60,7 +58,7 @@ here" />
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-reference-topic">
+    <div class="container template-news">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -112,57 +110,26 @@ here" />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Dog vs cats dataset</h1>
-    <small class="dont-index">Source: <a href='https://github.com/mlverse/torchdatasets/blob/master/R/dogs-vs-cats.R'><code>R/dogs-vs-cats.R</code></a></small>
-    <div class="hidden name"><code>dogs_vs_cats_dataset.Rd</code></div>
+      <h1 data-toc-skip>Changelog <small></small></h1>
+      <small>Source: <a href='https://github.com/mlverse/torchdatasets/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div class="ref-description">
-    <p>Prepares the dog vs cats dataset available in Kaggle
-<a href='https://www.kaggle.com/c/dogs-vs-cats'>here</a></p>
-    </div>
-
-    <pre class="usage"><span class='fu'>dogs_vs_cats_dataset</span><span class='op'>(</span><span class='va'>root</span>, token <span class='op'>=</span> <span class='cn'>NULL</span>, download <span class='op'>=</span> <span class='cn'>TRUE</span>, <span class='va'>...</span><span class='op'>)</span></pre>
-
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>root</th>
-      <td><p>path to the data location</p></td>
-    </tr>
-    <tr>
-      <th>token</th>
-      <td><p>a path to the json file obtained in Kaggle. See <a href='https://pins.rstudio.com/articles/boards-kaggle.html'>here</a>
-for additional info.</p></td>
-    </tr>
-    <tr>
-      <th>download</th>
-      <td><p>wether to download or not</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>other arguments passed to <code><a href='https://torchvision.mlverse.org/reference/image_folder_dataset.html'>torchvision::image_folder_dataset()</a></code>.</p></td>
-    </tr>
-    </table>
-
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>A <code><a href='https://torch.mlverse.org/docs/reference/dataset.html'>torch::dataset()</a></code> ready to be used with dataloaders.</p>
-
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='fu'>torch</span><span class='fu'>::</span><span class='fu'><a href='https://torch.mlverse.org/docs/reference/torch_is_installed.html'>torch_is_installed</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>&amp;&amp;</span> <span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-<span class='va'>dogs_cats</span> <span class='op'>&lt;-</span> <span class='fu'>dogs_vs_cats_dataset</span><span class='op'>(</span><span class='st'>"./data"</span>, token <span class='op'>=</span> <span class='st'>"path/to/kaggle.json"</span>,
-                                  download <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>dogs_cats</span><span class='op'>)</span>
-<span class='op'>}</span>
-</div></pre>
+    <div id="torchdatasets-001" class="section level1">
+<h1 class="page-header" data-toc-text="0.0.1">
+<a href="#torchdatasets-001" class="anchor"></a>torchdatasets 0.0.1<small> 2021-01-19 </small>
+</h1>
+<ul>
+<li>Added a <code>NEWS.md</code> file to track changes to the package.</li>
+</ul>
+</div>
   </div>
+
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>
     </nav>
   </div>
+
 </div>
 
 
