@@ -45,15 +45,10 @@ bank_marketing_dataset <- torch::dataset(
 
     # variavel resposta -------------------------------------------------
 
-    if(split == "train") {
-      self$images <- readr::read_csv(fs::path(data_path, "train.csv"), col_types = c("cn"))
-      if(!is.null(indexes)) self$images <- self$images[indexes, ]
-      self$.path <- file.path(data_path, "train_imgs")
-    } else if(split == "submission") {
-      self$images <- readr::read_csv(fs::path(data_path, "example_submition.csv"), col_types = c("cn"))
-      self$images$corr <- NA_real_
-      self$.path <- file.path(data_path, "test_imgs")
+    if(split != "train") {
+      stop("The bank marketing dataset only has a `train` split")
     }
+
     dataset <- readr::read_csv2(fs::path(data_path, "bank-additional/bank-additional-full.csv"))
     self$features <- dataset[-ncol(dataset)]
     self$target <- dataset[ncol(dataset)]
