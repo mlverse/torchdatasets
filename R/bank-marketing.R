@@ -81,7 +81,7 @@ bank_marketing_dataset <- torch::dataset(
 
     # attributes the numbers to the data instance
 
-    self$features <- dataset[,-which(colnames(dataset)=="y")]
+    self$features <- as.matrix(dataset[,-which(colnames(dataset)=="y")])
 
     self$target <- dataset[,"y"]
     self$target <- ifelse(self$target == "yes", 1, 0)
@@ -93,7 +93,6 @@ bank_marketing_dataset <- torch::dataset(
 
     x <- self$features[index, ]
     y <- self$target[index]
-
 
     x <- torch::torch_tensor(x)
     y <- torch::torch_scalar_tensor(y)
