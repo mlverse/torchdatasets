@@ -7,11 +7,9 @@
 #'
 #' @param root path to the data location
 #' @param split string. 'train' or 'submission'
-#' @param transform function that takes a torch tensor representing an image and return another tensor, transformed.
-#' @param target_transform function that takes a scalar torch tensor and returns another tensor, transformed.
-#' @param indexes set of integers for subsampling (e.g. 1:140000)
+#' @param indexes set of integers for subsampling (e.g. 1:41188)
 #' @param download whether to download or not
-#' @param target_as_numeric whether the target 'y' variable should be returned as 0/1 values or as "no"/"yes"
+#' @param with_call_duration whether the call duration should be included as a feature. Could lead to leakage. Default: FALSE.
 #'
 #' @return A torch dataset that can be consumed with [torch::dataloader()].
 #' @examples
@@ -22,12 +20,9 @@
 #' @export
 bank_marketing_dataset <- torch::dataset(
   "BankMarketing",
-  initialize = function(root, split = "train", transform = NULL, target_transform = NULL, indexes = NULL, download = FALSE, target_as_numeric = TRUE) {
+  initialize = function(root, split = "train", indexes = NULL, download = FALSE, with_call_duration = FALSE) {
 
-    self$transform <- transform
-    self$target_transform <- target_transform
-
-    # donwload ----------------------------------------------------------
+    # download ----------------------------------------------------------
     data_path <- fs::path(root, "bank-marketing")
 
     if (!fs::dir_exists(data_path) && download) {
@@ -43,18 +38,70 @@ bank_marketing_dataset <- torch::dataset(
     if (!fs::dir_exists(data_path))
       stop("No data found. Please use `download = TRUE`.")
 
-    # variavel resposta -------------------------------------------------
-
-    if(split != "train") {
+    if(tolower(split) != "train") {
       stop("The bank marketing dataset only has a `train` split")
     }
 
-    dataset <- readr::read_csv2(fs::path(data_path, "bank-additional/bank-additional-full.csv"))
-    self$features <- dataset[-ncol(dataset)]
-    self$target <- dataset[ncol(dataset)]
     self$.path <- file.path(data_path, "bank-additional")
-    if(target_as_numeric) {
-      self$target <- ifelse(self$target == "yes", 1, 0)
+
+    dataset <- readr::read_csv2(fs::path(data_path, "bank-additional/bank-additional-full.csv"))
+
+    if (!with_call_duration)
+      dataset <- dataset[,-which(colnames(dataset)=="duration")]
+
+    # one-hot encode unordered categorical features
+
+    unordered_categorical_features <- c("default",
+                                        "job",
+                                        "marital",
+                                        "housing",
+                                        "loan",
+                                        "contact",
+                                        "month",
+                                        "day_of_week",
+                                        "poutcome")
+    for (catvar in unordered_categorical_features) {
+      tmp_df <- model.matrix(~ 0 + as.data.frame(dataset)[,catvar])
+      colnames(tmp_df) <- paste(catvar, levels(as.factor(as.data.frame(dataset)[,catvar])), sep = "_")
+      dataset <- dataset[,-which(colnames(dataset)==catvar)]
+      dataset <- cbind(dataset, tmp_df)
     }
+    # encodes with integers the only ordered categorical feature, education
+
+    educ_factors <- c("unknown",
+                      "illiterate",
+                      "basic.4y",
+                      "basic.6y",
+                      "basic.9y",
+                      "high.school",
+                      "professional.course",
+                      "university.degree")
+    educ <- factor(dataset[, "education"], order = TRUE, levels = educ_factors)
+    dataset[, "education"] <- as.numeric(educ)
+
+    # attributes the numbers to the data instance
+
+    self$features <- dataset[,-which(colnames(dataset)=="y")]
+
+    self$target <- dataset[,"y"]
+    self$target <- ifelse(self$target == "yes", 1, 0)
+  }
+
+  .getitem = function(index) {
+
+    force(index)
+
+    x <- self$features[index, ]
+    y <- self$target[index]
+
+
+    x <- torch::torch_tensor(x)
+    y <- torch::torch_scalar_tensor(y)
+
+    return(list(x = x, y = y))
+  },
+
+  .length = function() {
+    nrow(self$features)
   }
 )
