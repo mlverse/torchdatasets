@@ -85,7 +85,7 @@ bank_marketing_dataset <- torch::dataset(
 
     self$target <- dataset[,"y"]
     self$target <- ifelse(self$target == "yes", 1, 0)
-  }
+  },
 
   .getitem = function(index) {
 
