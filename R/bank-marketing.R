@@ -44,7 +44,7 @@ bank_marketing_dataset <- torch::dataset(
 
     self$.path <- file.path(data_path, "bank-additional")
 
-    dataset <- readr::read_csv2(fs::path(data_path, "bank-additional/bank-additional-full.csv"))
+    dataset <- read.csv2(fs::path(data_path, "bank-additional/bank-additional-full.csv"))
 
     if (!with_call_duration)
       dataset <- dataset[,-which(colnames(dataset)=="duration")]
@@ -78,13 +78,13 @@ bank_marketing_dataset <- torch::dataset(
                       "university.degree")
     educ <- factor(dataset[, "education"], order = TRUE, levels = educ_factors)
     dataset[, "education"] <- as.numeric(educ)
-
+    dataset[, "y"] <- ifelse(dataset[, "y"] == "yes", 1, 0)
+    
     # attributes the numbers to the data instance
 
     self$features <- as.matrix(dataset[,-which(colnames(dataset)=="y")])
 
     self$target <- dataset[,"y"]
-    self$target <- ifelse(self$target == "yes", 1, 0)
   },
 
   .getitem = function(index) {
@@ -94,7 +94,7 @@ bank_marketing_dataset <- torch::dataset(
     x <- self$features[index, ]
     y <- self$target[index]
 
-    x <- torch::torch_tensor(x)
+    x <- torch::torch_tensor(as.numeric(unlist(x)))
     y <- torch::torch_scalar_tensor(y)
 
     return(list(x = x, y = y))
