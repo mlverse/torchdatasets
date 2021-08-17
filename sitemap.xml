@@ -4,7 +4,13 @@
     <loc>https://mlverse.github.io/torchdatasets/index.html</loc>
   </url>
   <url>
+    <loc>https://mlverse.github.io/torchdatasets/reference/bank_marketing_dataset.html</loc>
+  </url>
+  <url>
     <loc>https://mlverse.github.io/torchdatasets/reference/bird_species_dataset.html</loc>
+  </url>
+  <url>
+    <loc>https://mlverse.github.io/torchdatasets/reference/cityscapes_pix2pix_dataset.html</loc>
   </url>
   <url>
     <loc>https://mlverse.github.io/torchdatasets/reference/dogs_vs_cats_dataset.html</loc>
