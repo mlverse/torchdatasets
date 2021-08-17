@@ -27,6 +27,7 @@ Imports:
     stringr
 Suggests: 
     testthat,
-    readr
+    readr,
+    coro
 URL: https://mlverse.github.io/torchdatasets/, https://github.com/mlverse/torchdatasets
 BugReports: https://github.com/mlverse/torchdatasets/issues
