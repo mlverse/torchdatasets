@@ -79,7 +79,7 @@ bank_marketing_dataset <- torch::dataset(
     educ <- factor(dataset[, "education"], order = TRUE, levels = educ_factors)
     dataset[, "education"] <- as.numeric(educ)
     dataset[, "y"] <- ifelse(dataset[, "y"] == "yes", 1, 0)
-    
+
     # attributes the numbers to the data instance
 
     self$features <- as.matrix(dataset[,-which(colnames(dataset)=="y")])
