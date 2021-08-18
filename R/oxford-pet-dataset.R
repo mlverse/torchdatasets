@@ -1,10 +1,17 @@
 #' Oxford Pet Dataset
 #'
+#' The Oxford-IIIT Pet Dataset is a 37 category pet dataset with roughly
+#' 200 images for each class. The images have a large variations in scale,
+#' pose and lighting. All images have an associated ground truth annotation of
+#' breed, head ROI, and pixel level trimap segmentation.
 #'
+#' @inheritParams cityscapes_pix2pix_dataset
+#' @param target_type The type of the target:
+#'   - 'trimap': returns a mask array with one class per pixel.
+#'   - 'specie': returns the specie id. 1 for cat and 2 for dog.
+#'   - 'breed': returns the breed id. see `dataset$breed_classes`.
 #'
-#'
-#'
-#'
+#' @export
 oxford_pet_dataset <- torch::dataset(
   "OxfordPet",
 
