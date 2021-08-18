@@ -24,7 +24,8 @@ Imports:
     zip,
     pins,
     torchvision,
-    stringr
+    stringr,
+    withr
 Suggests: 
     testthat,
     readr,

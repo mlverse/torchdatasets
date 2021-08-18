@@ -18,14 +18,10 @@ cityscapes_pix2pix_dataset <- torch::dataset(
     data_path <- fs::path_expand(fs::path(root, "cityscapes-image-pairs"))
 
     if (!fs::dir_exists(data_path) && download) {
-
       tmp <- tempfile(fileext = ".tar.gz")
-      withr::with_options(new = list(timeout = max(300, getOption("timeout"))), {
-        download.file("http://efrosgans.eecs.berkeley.edu/pix2pix/datasets/cityscapes.tar.gz", tmp)
-      })
+      download_file("http://efrosgans.eecs.berkeley.edu/pix2pix/datasets/cityscapes.tar.gz", tmp)
       fs::dir_create(data_path)
       untar(tmp, exdir = data_path)
-
     }
 
     if (!fs::dir_exists(data_path))
