@@ -18,4 +18,7 @@
   <url>
     <loc>https://mlverse.github.io/torchdatasets/reference/guess_the_correlation_dataset.html</loc>
   </url>
+  <url>
+    <loc>https://mlverse.github.io/torchdatasets/reference/oxford_pet_dataset.html</loc>
+  </url>
 </urlset>
