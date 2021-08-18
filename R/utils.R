@@ -19,7 +19,7 @@ kaggle_download <- function(name, token = NULL) {
 
 download_file <- function(url, destfile) {
   withr::with_options(new = list(timeout = max(600, getOption("timeout"))), {
-    download.file(url, destfile)
+    utils::download.file(url, destfile)
   })
   destfile
 }
