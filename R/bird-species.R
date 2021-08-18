@@ -41,7 +41,12 @@ bird_species_dataset <- torch::dataset(
     if (!fs::dir_exists(data_path))
       stop("No data found. Please use `download = TRUE`.")
 
-    super$initialize(root = fs::path(data_path, split), ...)
+    if (fs::dir_exists(fs::path(data_path, "train")))
+      p <- fs::path(data_path, "split")
+    else
+      p <- fs::path(data_path, "birds", split)
+
+    super$initialize(root = p, ...)
 
   }
 
