@@ -106,7 +106,7 @@ oxford_pet_dataset <- torch::dataset(
     if (img$ext == "jpg")
       jpeg::readJPEG(path)
     else
-      png::readPNG(path)
+      png::readPNG(path)[,,1:3] # we remove the alpha channel
   },
 
   read_trimap = function(img) {
