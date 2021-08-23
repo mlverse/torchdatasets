@@ -84,8 +84,11 @@ oxford_pet_dataset <- torch::dataset(
 
     # rename files known to be PNG's
     self$imgs$ext <- "jpg"
-    pngs <- c("Egyptian_Mau_14", "Egyptian_Mau_156", "Egyptian_Mau_186")
+    pngs <- c("Egyptian_Mau_14", "Egyptian_Mau_156", "Egyptian_Mau_186", "Abyssinian_5")
     self$imgs$ext[self$imgs$image %in% pngs] <- "png"
+
+    # remove corrupt file
+    self$imgs <- self$imgs[self$imgs$image != "beagle_116",]
 
   },
 
