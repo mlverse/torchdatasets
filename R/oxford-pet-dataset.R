@@ -81,6 +81,12 @@ oxford_pet_dataset <- torch::dataset(
 
     self$transform <- if (is.null(transform)) identity else transform
     self$target_transform <- if (is.null(target_transform)) identity else target_transform
+
+    # rename files known to be PNG's
+    self$imgs$ext <- "jpg"
+    pngs <- c("Egyptian_Mau_14", "Egyptian_Mau_156", "Egyptian_Mau_186")
+    self$imgs$ext[self$imgs$image %in% pngs] <- "png"
+
   },
 
   .getitem = function(i) {
@@ -96,7 +102,11 @@ oxford_pet_dataset <- torch::dataset(
   },
 
   read_img = function(img) {
-    jpeg::readJPEG(fs::path(self$data_path, "images", paste0(img$image, ".jpg")))
+    path <- fs::path(self$data_path, "images", paste0(img$image, ".jpg"))
+    if (img$ext == "jpg")
+      jpeg::readJPEG(path)
+    else
+      png::readPNG(path)
   },
 
   read_trimap = function(img) {
