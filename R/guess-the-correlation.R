@@ -26,22 +26,17 @@ guess_the_correlation_dataset <- torch::dataset(
     self$target_transform <- target_transform
 
     # donwload ----------------------------------------------------------
-    data_path <- fs::path(root, "guess-the-correlation")
-
-    if (!fs::dir_exists(data_path) && download) {
-      fs::dir_create(data_path)
-      zip_path <- fs::path(data_path, "guess-the-correlation.zip")
-      download.file(
-        "https://storage.googleapis.com/torch-datasets/guess-the-correlation.zip",
-        destfile = zip_path
-      )
-      zip::unzip(zip_path, exdir = data_path)
-      zip::unzip(fs::path(data_path, "train_imgs.zip"), exdir = data_path)
-      zip::unzip(fs::path(data_path, "test_imgs.zip"), exdir = data_path)
-    }
-
-    if (!fs::dir_exists(data_path))
-      stop("No data found. Please use `download = TRUE`.")
+    data_path <- maybe_download(
+      root = root,
+      name = "guess-the-correlation",
+      url = "https://storage.googleapis.com/torch-datasets/guess-the-correlation.zip",
+      download = download,
+      extract_fun = function(temp, data_path) {
+        zip::unzip(temp, exdir = data_path)
+        zip::unzip(fs::path(data_path, "train_imgs.zip"), exdir = data_path)
+        zip::unzip(fs::path(data_path, "test_imgs.zip"), exdir = data_path)
+      }
+    )
 
     # variavel resposta -------------------------------------------------
 
