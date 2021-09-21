@@ -23,3 +23,18 @@ download_file <- function(url, destfile) {
   })
   destfile
 }
+
+maybe_download <- function(url, root, name, extract_fun, download) {
+  data_path <- fs::path_expand(fs::path(root, name))
+
+  if (!fs::dir_exists(data_path) && download) {
+    tmp <- tempfile()
+    download_file(url, tmp)
+    extract_fun(tmp, data_path)
+  }
+
+  if (!fs::dir_exists(data_path))
+    stop("No data found. Please use `download = TRUE`.")
+
+  data_path
+}

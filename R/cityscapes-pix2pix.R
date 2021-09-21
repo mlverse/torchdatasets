@@ -15,17 +15,17 @@ cityscapes_pix2pix_dataset <- torch::dataset(
   initialize = function(root, split = "train", download = FALSE, ...,
                         transform = NULL, target_transform = NULL) {
 
-    data_path <- fs::path_expand(fs::path(root, "cityscapes-image-pairs"))
+    url <- "http://efrosgans.eecs.berkeley.edu/pix2pix/datasets/cityscapes.tar.gz"
 
-    if (!fs::dir_exists(data_path) && download) {
-      tmp <- tempfile(fileext = ".tar.gz")
-      download_file("http://efrosgans.eecs.berkeley.edu/pix2pix/datasets/cityscapes.tar.gz", tmp)
-      fs::dir_create(data_path)
-      untar(tmp, exdir = data_path)
-    }
-
-    if (!fs::dir_exists(data_path))
-      stop("No data found. Please use `download = TRUE`.")
+    data_path <- maybe_download(
+      root = root,
+      url = url,
+      name = "cityscapes-image-pairs",
+      download = download,
+      extract_fun = function(f, exdir) {
+        untar(f, exdir = exdir)
+      }
+    )
 
     self$split <- split
 
