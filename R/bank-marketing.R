@@ -23,20 +23,15 @@ bank_marketing_dataset <- torch::dataset(
   initialize = function(root, split = "train", indexes = NULL, download = FALSE, with_call_duration = FALSE) {
 
     # download ----------------------------------------------------------
-    data_path <- fs::path(root, "bank-marketing")
-
-    if (!fs::dir_exists(data_path) && download) {
-      fs::dir_create(data_path)
-      zip_path <- fs::path(data_path, "bank-additional.zip")
-      download.file(
-        "https://archive.ics.uci.edu/ml/machine-learning-databases/00222/bank-additional.zip",
-        destfile = zip_path
-      )
-      zip::unzip(zip_path, exdir = data_path)
-    }
-
-    if (!fs::dir_exists(data_path))
-      stop("No data found. Please use `download = TRUE`.")
+    data_path <- maybe_download(
+      url = "https://archive.ics.uci.edu/ml/machine-learning-databases/00222/bank-additional.zip",
+      root = root,
+      name = "bank-marketing",
+      download = download,
+      extract_fun = function(tmp, data_path) {
+        zip::unzip(temp, exdir = data_path)
+      }
+    )
 
     if(tolower(split) != "train") {
       stop("The bank marketing dataset only has a `train` split")
