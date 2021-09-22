@@ -29,6 +29,7 @@ Imports:
 Suggests: 
     testthat,
     readr,
-    coro
+    coro,
+    tokenizers
 URL: https://mlverse.github.io/torchdatasets/, https://github.com/mlverse/torchdatasets
 BugReports: https://github.com/mlverse/torchdatasets/issues
