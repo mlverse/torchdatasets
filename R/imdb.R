@@ -1,11 +1,11 @@
 #' IMDB movie review sentiment classification dataset
 #'
-#' The format of this dataset is meant to replicate the same as
-#' [Keras's](https://keras.io/api/datasets/imdb/).
+#' The format of this dataset is meant to replicate that provided by 
+#' [Keras](https://keras.io/api/datasets/imdb/).
 #'
 #' @inheritParams bird_species_dataset
-#' @param shuffle wether to shuffle or not the dataset. `TRUE` if `split=="train"`
-#' @param num_words Words are ranked by how often they occur (in the training set)
+#' @param shuffle whether to shuffle or not the dataset. `TRUE` if `split=="train"`
+#' @param num_words Words are ranked by how often they occur (in the training set),
 #'   and only the num_words most frequent words are kept. Any less frequent word
 #'   will appear as oov_char value in the sequence data. If `Inf`, all words are
 #'   kept. Defaults to None, so all words are kept.
@@ -13,9 +13,9 @@
 #'   These words will appear as oov_char value in the dataset. Defaults to 0, so
 #'   no words are skipped.
 #' @param maxlen int or `Inf`. Maximum sequence length. Any longer sequence will
-#'   be truncated. Defaults to None, which means no truncation.
+#'   be truncated. Defaults to Inf, which means no truncation.
 #' @param start_char The start of a sequence will be marked with this character.
-#'   Defaults to 2 because 1 is usually the padding character.
+#'   Defaults to 2, because 1 is usually the padding character.
 #' @param oov_char int. The out-of-vocabulary character. Words that were cut out
 #'   because of the num_words or skip_top limits will be replaced with this character.
 #' @param index_from int. Index actual words with this index and higher.
@@ -73,7 +73,7 @@ imdb_dataset <- torch::dataset(
   .getitem = function(i) {
     words <- self$texts[[i]]
 
-    # word indexes start at 1, but we want it to start from `index_from`
+    # word indexes start at 1, but we want them to start from `index_from`
     int <- match(words, names(self$vocabulary)) + as.integer(self$index_from - 1)
     int[is.na(int)] <- as.integer(self$oov_char)
     int <- c(as.integer(self$start_char), int)
