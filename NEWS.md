@@ -5,6 +5,7 @@
 * Fixed bugwith newer version of the bird species dataset. (#17)
 * Added the oxford_pets_dataset. (#17)
 * Added a `maybe_download` util that is used to unify the download/extract code paths. (#22)
+* Added the IMDB dataset (#23)
 
 # torchdatasets 0.0.1
 
