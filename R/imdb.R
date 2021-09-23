@@ -36,7 +36,7 @@ imdb_dataset <- torch::dataset(
       download = download,
       name = "imdb",
       extract_fun = function(tmp, expath) {
-        untar(tmp, dir = expath)
+        untar(tmp, exdir = expath)
       }
     )
     self$data_path <- data_path
@@ -94,7 +94,7 @@ imdb_dataset <- torch::dataset(
   get_vocabulary = function() {
 
     data_path <- self$data_path
-    cached <- fs::path(data_path, "aclimdb", "cached-vocab.rds")
+    cached <- fs::path(data_path, "aclImdb", "cached-vocab.rds")
     if (!fs::file_exists(cached)) {
       texts <- self$read_and_tokenize("train")$texts
       vocabulary <- texts %>%
@@ -111,11 +111,12 @@ imdb_dataset <- torch::dataset(
   read_and_tokenize = function(split) {
 
     data_path <- self$data_path
-    cached <- fs::path(data_path, "aclimdb", split, "cached.rds")
+    cached <- fs::path(data_path, "aclImdb", split, "cached.rds")
 
     if (!fs::file_exists(cached)) {
-      pos <- fs::dir_ls(fs::path(data_path, "aclimdb", split, "pos"))
-      neg <- fs::dir_ls(fs::path(data_path, "aclimdb", split, "neg"))
+
+      pos <- fs::dir_ls(fs::path(data_path, "aclImdb", split, "pos"))
+      neg <- fs::dir_ls(fs::path(data_path, "aclImdb", split, "neg"))
 
       texts <- sapply(c(pos, neg), function(x) readr::read_file(x)) %>%
         tokenizers::tokenize_words()
