@@ -36,7 +36,7 @@ imdb_dataset <- torch::dataset(
       download = download,
       name = "imdb",
       extract_fun = function(tmp, expath) {
-        archive::archive_extract(tmp, dir = expath)
+        untar(tmp, dir = expath)
       }
     )
     self$data_path <- data_path
