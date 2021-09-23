@@ -25,7 +25,8 @@ Imports:
     pins,
     torchvision,
     stringr,
-    withr
+    withr,
+    archive
 Suggests: 
     testthat,
     readr,
