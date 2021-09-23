@@ -3,12 +3,12 @@
 #' The Oxford-IIIT Pet Dataset is a 37 category pet dataset with roughly
 #' 200 images for each class. The images have a large variations in scale,
 #' pose and lighting. All images have an associated ground truth annotation of
-#' breed, head ROI, and pixel level trimap segmentation.
+#' species (cat or dog), breed, and pixel-level trimap segmentation.
 #'
 #' @inheritParams cityscapes_pix2pix_dataset
 #' @param target_type The type of the target:
 #'   - 'trimap': returns a mask array with one class per pixel.
-#'   - 'specie': returns the specie id. 1 for cat and 2 for dog.
+#'   - 'species': returns the species id. 1 for cat and 2 for dog.
 #'   - 'breed': returns the breed id. see `dataset$breed_classes`.
 #'
 #' @export
@@ -16,7 +16,7 @@ oxford_pet_dataset <- torch::dataset(
   "OxfordPet",
 
   trimap_classes = c("Pixel belonging to the pet", "Pixel bordering the pet", "Surrounding pixel"),
-  specie_classes = c("cat", "dog"),
+  species_classes = c("cat", "dog"),
   breed_classes = c("Abyssinian", "american_bulldog", "american_pit_bull_terrier",
                     "basset_hound", "beagle", "Bengal", "Birman", "Bombay", "boxer",
                     "British_Shorthair", "chihuahua", "Egyptian_Mau", "english_cocker_spaniel",
@@ -27,7 +27,7 @@ oxford_pet_dataset <- torch::dataset(
                     "Siamese", "Sphynx", "staffordshire_bull_terrier", "wheaten_terrier",
                     "yorkshire_terrier"),
 
-  initialize = function(root, split = "train", target_type = c("trimap", "specie", "breed"),
+  initialize = function(root, split = "train", target_type = c("trimap", "species", "breed"),
                         download = FALSE, ..., transform = NULL, target_transform = NULL) {
 
     rlang::check_installed("readr")
@@ -75,7 +75,7 @@ oxford_pet_dataset <- torch::dataset(
     self$imgs <- readr::read_delim(
       img_list,
       delim = " ",
-      col_names = c("image", "class_id", "specie_id", "breed_id"),
+      col_names = c("image", "class_id", "species_id", "breed_id"),
       col_types = readr::cols()
     )
 
@@ -120,8 +120,8 @@ oxford_pet_dataset <- torch::dataset(
     mask
   },
 
-  read_specie = function(img) {
-    as.integer(img$specie_id)
+  read_species = function(img) {
+    as.integer(img$species_id)
   },
 
   read_breed = function(img) {
