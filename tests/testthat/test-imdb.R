@@ -26,7 +26,7 @@ test_that("imdb dataset works", {
   dl <- torch::dataloader(dataset, batch_size = 32)
   x <- coro::collect(dl, 1)[[1]]
 
-  expect_tensor_shape(x$x, c(32, 50))
+  expect_tensor_shape(x$x, c(32, 2500))
   expect_tensor_shape(x$y, c(32))
 
   # can load tests dataset
