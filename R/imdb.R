@@ -1,6 +1,6 @@
 #' IMDB movie review sentiment classification dataset
 #'
-#' The format of this dataset is meant to replicate that provided by 
+#' The format of this dataset is meant to replicate that provided by
 #' [Keras](https://keras.io/api/datasets/imdb/).
 #'
 #' @inheritParams bird_species_dataset
@@ -79,8 +79,11 @@ imdb_dataset <- torch::dataset(
     int <- c(as.integer(self$start_char), int)
 
     if (is.finite(self$maxlen)) {
-      int <- int[seq_len(self$maxlen)]
-      int[is.na(int)] <- 1L # padding character
+      if (length(int) >= self$maxlen) {
+        int <- int[seq_len(self$maxlen)]
+      } else {
+        int <- c(rep(1L, self$maxlen - length(int)), int)
+      }
     }
 
     list(
