@@ -43,7 +43,7 @@
 <meta property="og:description" content="The Oxford-IIIT Pet Dataset is a 37 category pet dataset with roughly
 200 images for each class. The images have a large variations in scale,
 pose and lighting. All images have an associated ground truth annotation of
-breed, head ROI, and pixel level trimap segmentation." />
+species (cat or dog), breed, and pixel-level trimap segmentation." />
 
 
 
@@ -123,13 +123,13 @@ breed, head ROI, and pixel level trimap segmentation." />
     <p>The Oxford-IIIT Pet Dataset is a 37 category pet dataset with roughly
 200 images for each class. The images have a large variations in scale,
 pose and lighting. All images have an associated ground truth annotation of
-breed, head ROI, and pixel level trimap segmentation.</p>
+species (cat or dog), breed, and pixel-level trimap segmentation.</p>
     </div>
 
     <pre class="usage"><span class='fu'>oxford_pet_dataset</span><span class='op'>(</span>
   <span class='va'>root</span>,
   split <span class='op'>=</span> <span class='st'>"train"</span>,
-  target_type <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"trimap"</span>, <span class='st'>"specie"</span>, <span class='st'>"breed"</span><span class='op'>)</span>,
+  target_type <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"trimap"</span>, <span class='st'>"species"</span>, <span class='st'>"breed"</span><span class='op'>)</span>,
   download <span class='op'>=</span> <span class='cn'>FALSE</span>,
   <span class='va'>...</span>,
   transform <span class='op'>=</span> <span class='cn'>NULL</span>,
@@ -151,7 +151,7 @@ breed, head ROI, and pixel level trimap segmentation.</p>
       <th>target_type</th>
       <td><p>The type of the target:</p><ul>
 <li><p>'trimap': returns a mask array with one class per pixel.</p></li>
-<li><p>'specie': returns the specie id. 1 for cat and 2 for dog.</p></li>
+<li><p>'species': returns the species id. 1 for cat and 2 for dog.</p></li>
 <li><p>'breed': returns the breed id. see <code>dataset$breed_classes</code>.</p></li>
 </ul></td>
     </tr>

@@ -40,8 +40,8 @@
 
 
 <meta property="og:title" content="IMDB movie review sentiment classification dataset — imdb_dataset" />
-<meta property="og:description" content="The format of this dataset is meant to replicate the same as
-Keras's." />
+<meta property="og:description" content="The format of this dataset is meant to replicate that provided by
+Keras." />
 
 
 
@@ -118,8 +118,8 @@ Keras's." />
     </div>
 
     <div class="ref-description">
-    <p>The format of this dataset is meant to replicate the same as
-<a href='https://keras.io/api/datasets/imdb/'>Keras's</a>.</p>
+    <p>The format of this dataset is meant to replicate that provided by
+<a href='https://keras.io/api/datasets/imdb/'>Keras</a>.</p>
     </div>
 
     <pre class="usage"><span class='fu'>imdb_dataset</span><span class='op'>(</span>
@@ -152,11 +152,11 @@ Keras's." />
     </tr>
     <tr>
       <th>shuffle</th>
-      <td><p>wether to shuffle or not the dataset. <code>TRUE</code> if <code>split=="train"</code></p></td>
+      <td><p>whether to shuffle or not the dataset. <code>TRUE</code> if <code>split=="train"</code></p></td>
     </tr>
     <tr>
       <th>num_words</th>
-      <td><p>Words are ranked by how often they occur (in the training set)
+      <td><p>Words are ranked by how often they occur (in the training set),
 and only the num_words most frequent words are kept. Any less frequent word
 will appear as oov_char value in the sequence data. If <code>Inf</code>, all words are
 kept. Defaults to None, so all words are kept.</p></td>
@@ -170,12 +170,12 @@ no words are skipped.</p></td>
     <tr>
       <th>maxlen</th>
       <td><p>int or <code>Inf</code>. Maximum sequence length. Any longer sequence will
-be truncated. Defaults to None, which means no truncation.</p></td>
+be truncated. Defaults to Inf, which means no truncation.</p></td>
     </tr>
     <tr>
       <th>start_char</th>
       <td><p>The start of a sequence will be marked with this character.
-Defaults to 2 because 1 is usually the padding character.</p></td>
+Defaults to 2, because 1 is usually the padding character.</p></td>
     </tr>
     <tr>
       <th>oov_char</th>
