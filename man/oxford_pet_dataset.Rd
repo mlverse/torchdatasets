@@ -7,7 +7,7 @@
 oxford_pet_dataset(
   root,
   split = "train",
-  target_type = c("trimap", "specie", "breed"),
+  target_type = c("trimap", "species", "breed"),
   download = FALSE,
   ...,
   transform = NULL,
@@ -22,7 +22,7 @@ oxford_pet_dataset(
 \item{target_type}{The type of the target:
 \itemize{
 \item 'trimap': returns a mask array with one class per pixel.
-\item 'specie': returns the specie id. 1 for cat and 2 for dog.
+\item 'species': returns the species id. 1 for cat and 2 for dog.
 \item 'breed': returns the breed id. see \code{dataset$breed_classes}.
 }}
 
@@ -40,5 +40,5 @@ transforms it.}
 The Oxford-IIIT Pet Dataset is a 37 category pet dataset with roughly
 200 images for each class. The images have a large variations in scale,
 pose and lighting. All images have an associated ground truth annotation of
-breed, head ROI, and pixel level trimap segmentation.
+species (cat or dog), breed, and pixel-level trimap segmentation.
 }

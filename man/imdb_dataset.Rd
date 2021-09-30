@@ -24,9 +24,9 @@ imdb_dataset(
 
 \item{split}{train, test or valid}
 
-\item{shuffle}{wether to shuffle or not the dataset. \code{TRUE} if \code{split=="train"}}
+\item{shuffle}{whether to shuffle or not the dataset. \code{TRUE} if \code{split=="train"}}
 
-\item{num_words}{Words are ranked by how often they occur (in the training set)
+\item{num_words}{Words are ranked by how often they occur (in the training set),
 and only the num_words most frequent words are kept. Any less frequent word
 will appear as oov_char value in the sequence data. If \code{Inf}, all words are
 kept. Defaults to None, so all words are kept.}
@@ -36,10 +36,10 @@ These words will appear as oov_char value in the dataset. Defaults to 0, so
 no words are skipped.}
 
 \item{maxlen}{int or \code{Inf}. Maximum sequence length. Any longer sequence will
-be truncated. Defaults to None, which means no truncation.}
+be truncated. Defaults to Inf, which means no truncation.}
 
 \item{start_char}{The start of a sequence will be marked with this character.
-Defaults to 2 because 1 is usually the padding character.}
+Defaults to 2, because 1 is usually the padding character.}
 
 \item{oov_char}{int. The out-of-vocabulary character. Words that were cut out
 because of the num_words or skip_top limits will be replaced with this character.}
@@ -47,6 +47,6 @@ because of the num_words or skip_top limits will be replaced with this character
 \item{index_from}{int. Index actual words with this index and higher.}
 }
 \description{
-The format of this dataset is meant to replicate the same as
-\href{https://keras.io/api/datasets/imdb/}{Keras's}.
+The format of this dataset is meant to replicate that provided by
+\href{https://keras.io/api/datasets/imdb/}{Keras}.
 }
