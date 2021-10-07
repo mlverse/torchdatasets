@@ -15,7 +15,7 @@ bird_species_dataset(
 \arguments{
 \item{root}{path to the data location}
 
-\item{token}{a path to the json file obtained in Kaggle. See \href{https://pins.rstudio.com/articles/boards-kaggle.html}{here}
+\item{token}{a path to the json file obtained in Kaggle. See \href{https://pins.rstudio.com/reference/legacy_kaggle.html}{here}
 for additional info.}
 
 \item{split}{train, test or valid}
@@ -33,7 +33,7 @@ Prepares the bird species dataset available in Kaggle \href{https://www.kaggle.c
 \details{
 We use pins for downloading and managing authetication.
 If you want to download the dataset you need to register the Kaggle board as
-described in \href{https://pins.rstudio.com/articles/boards-kaggle.html}{this link}.
+described in \href{https://pins.rstudio.com/reference/legacy_kaggle.html}{this link}.
 or pass the \code{token} argument.
 }
 \examples{

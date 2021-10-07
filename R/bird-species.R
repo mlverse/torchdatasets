@@ -5,11 +5,11 @@
 #'
 #' We use pins for downloading and managing authetication.
 #' If you want to download the dataset you need to register the Kaggle board as
-#' described in [this link](https://pins.rstudio.com/articles/boards-kaggle.html).
+#' described in [this link](https://pins.rstudio.com/reference/legacy_kaggle.html).
 #' or pass the `token` argument.
 #'
 #' @param root path to the data location
-#' @param token a path to the json file obtained in Kaggle. See [here](https://pins.rstudio.com/articles/boards-kaggle.html)
+#' @param token a path to the json file obtained in Kaggle. See [here](https://pins.rstudio.com/reference/legacy_kaggle.html)
 #'   for additional info.
 #' @param split train, test or valid
 #' @param download wether to download or not
