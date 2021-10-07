@@ -1,4 +1,4 @@
-# torchdatasets (development version)
+# torchdatasets 0.1.0
 
 * Added the bank marketing dataset (#10, #11, #12, #13, @dkgaraujo)
 * Added cityscapes dataset used in the pix2pix paper. (#14)
