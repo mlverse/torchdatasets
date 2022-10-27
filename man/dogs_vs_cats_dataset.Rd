@@ -4,13 +4,19 @@
 \alias{dogs_vs_cats_dataset}
 \title{Dog vs cats dataset}
 \usage{
-dogs_vs_cats_dataset(root, token = NULL, download = TRUE, ...)
+dogs_vs_cats_dataset(
+  root,
+  split = "train",
+  download = FALSE,
+  ...,
+  transform = NULL,
+  target_transform = NULL
+)
 }
 \arguments{
 \item{root}{path to the data location}
 
-\item{token}{a path to the json file obtained in Kaggle. See \href{https://pins.rstudio.com/reference/legacy_kaggle.html}{here}
-for additional info.}
+\item{split}{train, test or valid}
 
 \item{download}{wether to download or not}
 
@@ -29,4 +35,5 @@ dogs_cats <- dogs_vs_cats_dataset("./data", token = "path/to/kaggle.json",
                                   download = TRUE)
 length(dogs_cats)
 }
+
 }
