@@ -1,7 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://mlverse.github.io/torchdatasets/404.html</loc>
+  </url>
+  <url>
+    <loc>https://mlverse.github.io/torchdatasets/LICENSE-text.html</loc>
+  </url>
+  <url>
+    <loc>https://mlverse.github.io/torchdatasets/LICENSE.html</loc>
+  </url>
+  <url>
+    <loc>https://mlverse.github.io/torchdatasets/authors.html</loc>
+  </url>
+  <url>
     <loc>https://mlverse.github.io/torchdatasets/index.html</loc>
+  </url>
+  <url>
+    <loc>https://mlverse.github.io/torchdatasets/news/index.html</loc>
   </url>
   <url>
     <loc>https://mlverse.github.io/torchdatasets/reference/bank_marketing_dataset.html</loc>
@@ -20,6 +35,9 @@
   </url>
   <url>
     <loc>https://mlverse.github.io/torchdatasets/reference/imdb_dataset.html</loc>
+  </url>
+  <url>
+    <loc>https://mlverse.github.io/torchdatasets/reference/index.html</loc>
   </url>
   <url>
     <loc>https://mlverse.github.io/torchdatasets/reference/oxford_pet_dataset.html</loc>
