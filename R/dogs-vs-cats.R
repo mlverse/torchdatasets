@@ -70,7 +70,7 @@ dogs_vs_cats_dataset <- torch::dataset(
 
     list(x, y)
   },
-  .lenght = function() {
+  .length = function() {
     length(self$images)
   }
 )
