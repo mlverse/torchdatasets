@@ -72,15 +72,19 @@ here"><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathja
 
 
 <dt>split</dt>
-<dd><p>train, test or valid</p></dd>
+<dd><p>string. 'train' or 'submission'</p></dd>
 
 
 <dt>download</dt>
-<dd><p>wether to download or not</p></dd>
+<dd><p>whether to download or not</p></dd>
 
 
-<dt>...</dt>
-<dd><p>other arguments passed to <code><a href="https://torchvision.mlverse.org/reference/image_folder_dataset.html" class="external-link">torchvision::image_folder_dataset()</a></code>.</p></dd>
+<dt>transform</dt>
+<dd><p>function that takes a torch tensor representing an image and return another tensor, transformed.</p></dd>
+
+
+<dt>target_transform</dt>
+<dd><p>function that takes a scalar torch tensor and returns another tensor, transformed.</p></dd>
 
 </dl></div>
     <div id="value">
