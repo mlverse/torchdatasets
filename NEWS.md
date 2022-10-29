@@ -1,6 +1,7 @@
 # torchdatasets (development version)
 
 - Fixed issues with the dogs-vs-cats dataset. (#29)
+- Better handle the bird species dataset.
 
 # torchdatasets 0.1.0
 
