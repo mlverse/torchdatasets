@@ -16,11 +16,13 @@ dogs_vs_cats_dataset(
 \arguments{
 \item{root}{path to the data location}
 
-\item{split}{train, test or valid}
+\item{split}{string. 'train' or 'submission'}
 
-\item{download}{wether to download or not}
+\item{download}{whether to download or not}
 
-\item{...}{other arguments passed to \code{\link[torchvision:image_folder_dataset]{torchvision::image_folder_dataset()}}.}
+\item{transform}{function that takes a torch tensor representing an image and return another tensor, transformed.}
+
+\item{target_transform}{function that takes a scalar torch tensor and returns another tensor, transformed.}
 }
 \value{
 A \code{\link[torch:dataset]{torch::dataset()}} ready to be used with dataloaders.

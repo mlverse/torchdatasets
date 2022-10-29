@@ -4,19 +4,10 @@
 \alias{bird_species_dataset}
 \title{Bird species dataset}
 \usage{
-bird_species_dataset(
-  root,
-  token = NULL,
-  split = "train",
-  download = FALSE,
-  ...
-)
+bird_species_dataset(root, split = "train", download = FALSE, ...)
 }
 \arguments{
 \item{root}{path to the data location}
-
-\item{token}{a path to the json file obtained in Kaggle. See \href{https://pins.rstudio.com/reference/legacy_kaggle.html}{here}
-for additional info.}
 
 \item{split}{train, test or valid}
 
@@ -28,13 +19,8 @@ for additional info.}
 A \code{\link[torch:dataset]{torch::dataset()}} ready to be used with dataloaders.
 }
 \description{
-Prepares the bird species dataset available in Kaggle \href{https://www.kaggle.com/gpiosenka/100-bird-species}{here}
-}
-\details{
-We use pins for downloading and managing authetication.
-If you want to download the dataset you need to register the Kaggle board as
-described in \href{https://pins.rstudio.com/reference/legacy_kaggle.html}{this link}.
-or pass the \code{token} argument.
+Downloads and prepares the 450 bird species dataset found on Kaggle.
+The dataset description, license, etc can be found \href{https://www.kaggle.com/datasets/gpiosenka/100-bird-species}{here}.
 }
 \examples{
 if (torch::torch_is_installed() && FALSE) {

@@ -3,7 +3,7 @@
 #' Prepares the dog vs cats dataset available in Kaggle
 #' [here](https://www.kaggle.com/c/dogs-vs-cats)
 #'
-#' @inheritParams bird_species_dataset
+#' @inheritParams guess_the_correlation_dataset
 #'
 #' @return A [torch::dataset()] ready to be used with dataloaders.
 #' @examples
