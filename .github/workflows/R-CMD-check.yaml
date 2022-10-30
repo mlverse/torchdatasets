@@ -74,6 +74,10 @@ jobs:
           writeLines(c(Sys.getenv("KAGGLE"), "\n"), "tests/testthat/kaggle.json")
         shell: Rscript {0}
 
+      - name: Setup upterm session
+        if: ${{ matrix.config.os == 'ubuntu-20.04' }}
+        uses: lhotari/action-upterm@v1
+
       - name: Check
         env:
           _R_CHECK_CRAN_INCOMING_REMOTE_: false
