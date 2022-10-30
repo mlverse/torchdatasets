@@ -39,3 +39,11 @@ maybe_download <- function(url, root, name, extract_fun, download) {
 
   data_path
 }
+
+unzip2 <- function(path, exdir) {
+  if (grepl("linux", R.version$os)) {
+    unzip(path, exdir = exdir)
+  } else {
+    unzip2(path, exdir = exdir)
+  }
+}

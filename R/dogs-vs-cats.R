@@ -32,9 +32,9 @@ dogs_vs_cats_dataset <- torch::dataset(
       url = url,
       download = download,
       extract_fun = function(temp, data_path) {
-        zip::unzip(temp, exdir = data_path)
-        zip::unzip(fs::path(data_path, "train.zip"), exdir = data_path)
-        zip::unzip(fs::path(data_path, "test1.zip"), exdir = data_path)
+        unzip2(temp, exdir = data_path)
+        unzip2(fs::path(data_path, "train.zip"), exdir = data_path)
+        unzip2(fs::path(data_path, "test1.zip"), exdir = data_path)
         fs::file_delete(fs::path(data_path, "train.zip"))
         fs::file_delete(fs::path(data_path, "test1.zip"))
       }

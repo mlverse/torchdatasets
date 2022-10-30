@@ -31,7 +31,7 @@ bird_species_dataset <- torch::dataset(
       url = url,
       download = download,
       extract_fun = function(temp, data_path) {
-        zip::unzip(temp, exdir = data_path)
+        unzip2(temp, exdir = data_path)
       }
     )
 

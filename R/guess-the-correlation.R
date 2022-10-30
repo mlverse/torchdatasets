@@ -32,9 +32,9 @@ guess_the_correlation_dataset <- torch::dataset(
       url = "https://storage.googleapis.com/torch-datasets/guess-the-correlation.zip",
       download = download,
       extract_fun = function(temp, data_path) {
-        zip::unzip(temp, exdir = data_path)
-        zip::unzip(fs::path(data_path, "train_imgs.zip"), exdir = data_path)
-        zip::unzip(fs::path(data_path, "test_imgs.zip"), exdir = data_path)
+        unzip2(temp, exdir = data_path)
+        unzip2(fs::path(data_path, "train_imgs.zip"), exdir = data_path)
+        unzip2(fs::path(data_path, "test_imgs.zip"), exdir = data_path)
       }
     )
 

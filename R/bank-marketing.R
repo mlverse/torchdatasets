@@ -29,7 +29,7 @@ bank_marketing_dataset <- torch::dataset(
       name = "bank-marketing",
       download = download,
       extract_fun = function(tmp, data_path) {
-        zip::unzip(tmp, exdir = data_path)
+        unzip2(tmp, exdir = data_path)
       }
     )
 

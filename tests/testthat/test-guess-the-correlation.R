@@ -1,7 +1,8 @@
 test_that("guess_the_correlation_dataset works", {
 
+  tmp <- tempfile()
   dataset <- guess_the_correlation_dataset(
-    root = tempfile(),
+    root = tmp,
     download = TRUE,
     transform = function(x) torch::torch_zeros(3,3)
   )
