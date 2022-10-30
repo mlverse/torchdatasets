@@ -4,6 +4,7 @@
 #' [here](https://www.kaggle.com/c/dogs-vs-cats)
 #'
 #' @inheritParams guess_the_correlation_dataset
+#' @param ... Currently unused.
 #'
 #' @return A [torch::dataset()] ready to be used with dataloaders.
 #' @examples

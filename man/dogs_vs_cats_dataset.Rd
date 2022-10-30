@@ -20,6 +20,8 @@ dogs_vs_cats_dataset(
 
 \item{download}{whether to download or not}
 
+\item{...}{Currently unused.}
+
 \item{transform}{function that takes a torch tensor representing an image and return another tensor, transformed.}
 
 \item{target_transform}{function that takes a scalar torch tensor and returns another tensor, transformed.}
