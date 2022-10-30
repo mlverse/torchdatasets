@@ -44,6 +44,6 @@ unzip2 <- function(path, exdir) {
   if (grepl("linux", R.version$os)) {
     unzip(path, exdir = exdir)
   } else {
-    unzip2(path, exdir = exdir)
+    zip::unzip(path, exdir = exdir)
   }
 }
