@@ -123,6 +123,7 @@ flower_categories <- c(
 #'
 #' @inheritParams oxford_pet_dataset
 #' @param target_type Currently only 'categories' is supported.
+#' @importFrom torch dataset
 #' @export
 oxford_flowers102_dataset <- torch::dataset(
   "OxfordFlowers102",

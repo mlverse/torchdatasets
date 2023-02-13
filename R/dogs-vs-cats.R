@@ -15,6 +15,7 @@
 #' }
 #'
 #' @importFrom torchvision base_loader
+#' @importFrom stringr str_extract
 #' @export
 dogs_vs_cats_dataset <- torch::dataset(
   classes = c("dog", "cat"),
