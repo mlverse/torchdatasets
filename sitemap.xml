@@ -40,6 +40,9 @@
     <loc>https://mlverse.github.io/torchdatasets/reference/index.html</loc>
   </url>
   <url>
+    <loc>https://mlverse.github.io/torchdatasets/reference/oxford_flowers102_dataset.html</loc>
+  </url>
+  <url>
     <loc>https://mlverse.github.io/torchdatasets/reference/oxford_pet_dataset.html</loc>
   </url>
 </urlset>
