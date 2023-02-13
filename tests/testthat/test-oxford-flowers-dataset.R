@@ -4,7 +4,8 @@ test_that("oxford flowers dataset", {
 
   train <- oxford_flowers102_dataset(
     root = root,
-    download = TRUE
+    download = TRUE,
+    transform = torchvision::transform_to_tensor
   )
 
   valid <- oxford_flowers102_dataset(
