@@ -14,6 +14,13 @@ test_that("oxford flowers dataset", {
     transform = torchvision::transform_to_tensor
   )
 
+  test <- oxford_flowers102_dataset(
+    root = root,
+    split = "test",
+    download = FALSE,
+    transform = torchvision::transform_to_tensor
+  )
+
   all <- oxford_flowers102_dataset(
     root = root,
     split = c("train", "valid", "test"),
@@ -26,6 +33,7 @@ test_that("oxford flowers dataset", {
   expect_equal(length(all), 8189)
   expect_equal(length(valid), 1020)
   expect_equal(length(train), 1020)
+  expect_equal(length(test), 6149)
 
   expect_tensor_shape(train[1][[1]], c(3, 500, 754))
   expect_tensor_shape(valid[1][[1]], c(3, 500, 606))

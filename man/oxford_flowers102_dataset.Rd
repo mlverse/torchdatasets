@@ -46,3 +46,7 @@ features.
 
 You can find more info in the dataset \href{https://www.robots.ox.ac.uk/\%7Evgg/data/flowers/102/}{webpage}.
 }
+\note{
+The official splits leaves far too many images in the test set. Depending
+on your work you might want to create different train/valid/test splits.
+}

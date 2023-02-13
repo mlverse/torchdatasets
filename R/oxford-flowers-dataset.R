@@ -118,6 +118,9 @@ flower_categories <- c(
 #'
 #' You can find more info in the dataset [webpage](https://www.robots.ox.ac.uk/%7Evgg/data/flowers/102/).
 #'
+#' @note The official splits leaves far too many images in the test set. Depending
+#'   on your work you might want to create different train/valid/test splits.
+#'
 #' @inheritParams oxford_pet_dataset
 #' @param target_type Currently only 'categories' is supported.
 #' @export
