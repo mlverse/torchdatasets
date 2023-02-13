@@ -129,7 +129,7 @@ oxford_flowers102_dataset <- torch::dataset(
   classes = flower_categories,
   initialize = function(root, split = "train", target_type = c("categories"),
                         download = FALSE, ..., transform = NULL, target_transform = NULL) {
-    rlang::check_installed(c("readr", "R.matlab"))
+    rlang::check_installed(c("R.matlab"))
 
     data_path <- fs::path_expand(fs::path(root, "oxford-flowers102"))
     self$data_path <- data_path

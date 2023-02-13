@@ -30,6 +30,7 @@ Suggests:
     testthat,
     readr,
     coro,
-    tokenizers
+    tokenizers,
+    R.matlab
 URL: https://mlverse.github.io/torchdatasets/, https://github.com/mlverse/torchdatasets
 BugReports: https://github.com/mlverse/torchdatasets/issues
