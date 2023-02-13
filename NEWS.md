@@ -1,5 +1,7 @@
 # torchdatasets (development version)
 
+- Added Oxford Flowers Dataset (#32)
+
 # torchdatasets 0.2.0
 
 - Fixed issues with the dogs-vs-cats dataset. (#29)
