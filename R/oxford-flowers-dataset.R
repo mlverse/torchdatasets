@@ -144,12 +144,14 @@ oxford_flowers102_dataset <- torch::dataset(
 
       targets <- download_file(
         "https://storage.googleapis.com/torch-datasets/oxford_flowers102/imagelabels.mat",
-        tempfile(fileext = ".mat")
+        tempfile(fileext = ".mat"),
+        mode = "wb"
       )
 
       splits <- download_file(
         "https://storage.googleapis.com/torch-datasets/oxford_flowers102/setid.mat",
-        tempfile(fileext = ".mat")
+        tempfile(fileext = ".mat"),
+        mode = "wb"
       )
 
       fs::dir_create(data_path)
