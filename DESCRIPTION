@@ -16,7 +16,7 @@ Description: Provides datasets in a format that can be easily consumed by torch 
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.1
+RoxygenNote: 7.2.3
 Imports: 
     torch (>= 0.5.0),
     fs,
@@ -30,6 +30,7 @@ Suggests:
     testthat,
     readr,
     coro,
-    tokenizers
+    tokenizers,
+    R.matlab
 URL: https://mlverse.github.io/torchdatasets/, https://github.com/mlverse/torchdatasets
 BugReports: https://github.com/mlverse/torchdatasets/issues
