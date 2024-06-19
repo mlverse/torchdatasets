@@ -24,7 +24,7 @@ bird_species_dataset <- torch::dataset(
   inherit = torchvision::image_folder_dataset,
   initialize = function(root, split = "train", download = FALSE, ...) {
 
-    url <- "https://storage.googleapis.com/torch-datasets/bird-species.zip"
+    url <- "https://torch-cdn.mlverse.org/datasets/bird-species.zip"
     data_path <- maybe_download(
       root = root,
       name = "bird-species",

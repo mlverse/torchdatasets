@@ -29,7 +29,7 @@ guess_the_correlation_dataset <- torch::dataset(
     data_path <- maybe_download(
       root = root,
       name = "guess-the-correlation",
-      url = "https://storage.googleapis.com/torch-datasets/guess-the-correlation.zip",
+      url = "https://torch-cdn.mlverse.org/datasets/guess-the-correlation.zip",
       download = download,
       extract_fun = function(temp, data_path) {
         unzip2(temp, exdir = data_path)
