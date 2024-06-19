@@ -138,18 +138,18 @@ oxford_flowers102_dataset <- torch::dataset(
     if (!fs::dir_exists(data_path) && download) {
 
       images <- download_file(
-        "https://storage.googleapis.com/torch-datasets/oxford_flowers102/102flowers.tgz",
+        "https://torch-cdn.mlverse.org/datasets/oxford_flowers102/102flowers.tgz",
         tempfile(fileext = ".tgz")
       )
 
       targets <- download_file(
-        "https://storage.googleapis.com/torch-datasets/oxford_flowers102/imagelabels.mat",
+        "https://torch-cdn.mlverse.org/datasets/oxford_flowers102/imagelabels.mat",
         tempfile(fileext = ".mat"),
         mode = "wb"
       )
 
       splits <- download_file(
-        "https://storage.googleapis.com/torch-datasets/oxford_flowers102/setid.mat",
+        "https://torch-cdn.mlverse.org/datasets/oxford_flowers102/setid.mat",
         tempfile(fileext = ".mat"),
         mode = "wb"
       )

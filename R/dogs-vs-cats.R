@@ -25,7 +25,7 @@ dogs_vs_cats_dataset <- torch::dataset(
     self$transform <- transform
     self$target_transform <- target_transform
 
-    url <- "https://storage.googleapis.com/torch-datasets/dogs-vs-cats.zip"
+    url <- "https://torch-cdn.mlverse.org/datasets/dogs-vs-cats.zip"
 
     data_path <- maybe_download(
       root = root,
