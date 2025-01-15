@@ -1,5 +1,4 @@
 if (requireNamespace("testthat", quietly = TRUE)) {
-  library(testthat)
   
   test_that("spam_dataloader works as expected", {
     

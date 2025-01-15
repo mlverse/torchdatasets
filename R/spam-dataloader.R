@@ -1,64 +1,67 @@
-#' Spam Data Loader
+#' Spam Dataset Loader
 #'
-#' A dataloader for the spam dataset commonly used in machine learning.
+#' Defines the spam dataset commonly used in machine learning.
 #'
 #' @param url A character string representing the URL of the dataset.
-#' @param batch_size Number of samples per batch. Defaults to 32.
-#' @param shuffle Logical; whether to shuffle the data. Defaults to TRUE.
 #' @param download Logical; whether to download the dataset. Defaults to FALSE.
-#' @return A torch dataloader object for the spam dataset.
+#' @param transform Function to apply transformations to the features. Defaults to NULL.
+#' @param target_transform Function to apply transformations to the labels. Defaults to NULL.
+#' @return A `torch::dataset` object for the spam dataset.
 #' @examples
 #' \dontrun{
 #' # Simple usage:
-#' loader <- spam_dataloader(download = TRUE)
+#' ds <- spam_dataset(download = TRUE)
+#' loader <- dataloader(ds, batch_size = 32, shuffle = TRUE)
 #' batch <- dataloader_make_iter(loader) %>% dataloader_next()
 #' dim(batch$x)
 #' length(batch$y)
 #' }
 #' @export
-spam_dataloader <- function(
+spam_dataset <- torch::dataset(
+  name = "spam_dataset",
+  
+  initialize = function(
     url = "https://hastie.su.domains/ElemStatLearn/datasets/spam.data",
-    batch_size = 32,
-    shuffle = TRUE,
-    download = FALSE
-) {
-  library(torch)
-  
- 
-  data_path <- tempfile(fileext = ".data")
- 
-  if (download) {
-    download.file(url, data_path, mode = "wb")
-  } else {
-    data_path <- url
-  }
-  
-  raw_spam_data <- read.table(data_path, header = FALSE)
-  
-  x_data <- as.matrix(raw_spam_data[, -ncol(raw_spam_data)])
-  y_data <- as.numeric(raw_spam_data[, ncol(raw_spam_data)])
-  
-  x_tensor <- torch_tensor(x_data, dtype = torch_float())
-  y_tensor <- torch_tensor(y_data, dtype = torch_long())
-  
-  spam_dataset <- dataset(
-    name = "spam_dataset",
-    initialize = function(x, y) {
-      self$x <- x
-      self$y <- y
-    },
-    .getitem = function(index) {
-      list(
-        x = self$x[index, ],
-        y = self$y[index]
-      )
-    },
-    .length = function() {
-      self$y$size(1)
+    download = FALSE,
+    transform = NULL,
+    target_transform = NULL
+  ) {
+    data_path <- tempfile(fileext = ".data")
+    
+    if (download) {
+      download.file(url, data_path, mode = "wb")
+    } else {
+      data_path <- url
     }
-  )
+    
+    raw_spam_data <- read.table(data_path, header = FALSE)
+    
+    self$x_data <- as.matrix(raw_spam_data[, -ncol(raw_spam_data)])
+    self$y_data <- as.numeric(raw_spam_data[, ncol(raw_spam_data)])
+    
+    self$transform <- transform
+    self$target_transform <- target_transform
+  },
   
-  ds <- spam_dataset(x = x_tensor, y = y_tensor)
+  .getitem = function(index) {
+    x <- self$x_data[index, ]
+    y <- self$y_data[index]
+    
+    if (!is.null(self$transform)) {
+      x <- self$transform(x)
+    }
+    
+    if (!is.null(self$target_transform)) {
+      y <- self$target_transform(y)
+    }
+    
+    list(
+      x = torch_tensor(x, dtype = torch_float()),
+      y = torch_tensor(y, dtype = torch_long())
+    )
+  },
   
-  dataloader(ds, batch_size = batch_size, shuffle = shuffle)
-}
+  .length = function() {
+    nrow(self$x_data)
+  }
+)
