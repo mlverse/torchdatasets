@@ -35,3 +35,4 @@ Currently, the following datasets are implemented:
 | oxford_pet_dataset()            | Images  | Segmentation   | Not required   |
 | bank_marketing_dataset()        | Tabular | Classification | Not required   |
 | imdb_dataset()                  | Text    | Classification | Not required   |
+| spam_dataset()                  | Tabular | Classification | Not required   |
