@@ -11,3 +11,5 @@
 ^CRAN-RELEASE$
 ^imdb
 ^CRAN-SUBMISSION$
+^\.git$
+^tests/testthat/bird$

@@ -8,3 +8,4 @@ examples
 gtc
 imdb
 dogs-vs-cats
+tests/testthat/bird
