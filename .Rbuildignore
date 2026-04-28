@@ -13,3 +13,4 @@
 ^CRAN-SUBMISSION$
 ^\.git$
 ^tests/testthat/bird$
+^tests/testthat/dogs-vs-cats$
