@@ -3,7 +3,7 @@ Title: Ready to Use Extra Datasets for Torch
 Version: 0.3.2
 Authors@R:
     c(
-    person("Tomasz", "Kalinowski", role = c("ctb", "cre"), email = "daniel@posit.co"),
+    person("Tomasz", "Kalinowski", role = c("ctb", "cre"), email = "tomasz@posit.co"),
     person("Daniel", "Falbel", role = c("aut", "cph"), email = "dfalbel@gmail.com"),
     person(family = "RStudio", role = c("cph"))
     )
