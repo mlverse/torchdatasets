@@ -11,10 +11,7 @@
 #' \dontrun{
 #' # Simple usage:
 #' ds <- spam_dataset(download = TRUE)
-#' loader <- dataloader(ds, batch_size = 32, shuffle = TRUE)
-#' batch <- dataloader_make_iter(loader) %>% dataloader_next()
-#' dim(batch$x)
-#' length(batch$y)
+#' ds[1]
 #' }
 #' @export
 spam_dataset <- torch::dataset(
@@ -56,8 +53,8 @@ spam_dataset <- torch::dataset(
     }
     
     list(
-      x = torch::torch_tensor(x, dtype = torch_float()),
-      y = torch::torch_tensor(y, dtype = torch_long())
+      x = torch::torch_tensor(x, dtype = torch::torch_float()),
+      y = torch::torch_tensor(y, dtype = torch::torch_long())
     )
   },
   
