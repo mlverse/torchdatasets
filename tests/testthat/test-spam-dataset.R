@@ -1,6 +1,12 @@
 test_that("spam_dataset works as expected", {
-
-  dataset <- spam_dataset(download = TRUE)
+  dataset <- tryCatch(
+    spam_dataset(download = TRUE),
+    error = function(e) {
+      if (grepl("cannot open URL|HTTP status|download.file", conditionMessage(e)))
+        skip(paste("Spam dataset download failed:", conditionMessage(e)))
+      stop(e)
+    }
+  )
 
   expect_true(length(dataset) > 0)
 
