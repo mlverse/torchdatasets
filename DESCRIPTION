@@ -1,13 +1,10 @@
 Package: torchdatasets
 Title: Ready to Use Extra Datasets for Torch
 Version: 0.3.2
-Authors@R: 
+Authors@R:
     c(
-    person(given = "Daniel",
-           family = "Falbel",
-           role = c("aut", "cre"),
-           email = "daniel@rstudio.com"
-           ),
+    person("Tomasz", "Kalinowski", role = c("ctb", "cre"), email = "tomasz@posit.co"),
+    person("Daniel", "Falbel", role = c("aut", "cph"), email = "dfalbel@gmail.com"),
     person(family = "RStudio", role = c("cph"))
     )
 Description: Provides datasets in a format that can be easily consumed by torch 'dataloaders'.
