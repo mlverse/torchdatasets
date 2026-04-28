@@ -20,7 +20,6 @@ A \code{\link[torch:dataset]{torch::dataset()}} ready to be used with dataloader
 }
 \description{
 Downloads and prepares the 450 bird species dataset found on Kaggle.
-The dataset description, license, etc can be found \href{https://www.kaggle.com/datasets/gpiosenka/100-bird-species}{here}.
 }
 \examples{
 if (torch::torch_is_installed() && FALSE) {
