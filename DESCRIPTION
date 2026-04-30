@@ -1,6 +1,6 @@
 Package: torchdatasets
 Title: Ready to Use Extra Datasets for Torch
-Version: 0.3.2
+Version: 0.3.2.9000
 Authors@R:
     c(
     person("Tomasz", "Kalinowski", role = c("ctb", "cre"), email = "tomasz@posit.co"),
