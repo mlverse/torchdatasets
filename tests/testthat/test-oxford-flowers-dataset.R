@@ -1,4 +1,5 @@
 test_that("oxford flowers dataset", {
+  skip_if_not_installed("R.matlab")
 
   root <- tempfile()
 

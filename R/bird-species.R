@@ -3,7 +3,6 @@
 #'
 #'
 #' Downloads and prepares the 450 bird species dataset found on Kaggle.
-#' The dataset description, license, etc can be found [here](https://www.kaggle.com/datasets/gpiosenka/100-bird-species).
 #'
 #'
 #' @param root path to the data location

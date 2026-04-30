@@ -1,4 +1,4 @@
-# torchdatasets (development version)
+# torchdatasets 0.3.2
 
 # torchdatasets 0.3.1
 

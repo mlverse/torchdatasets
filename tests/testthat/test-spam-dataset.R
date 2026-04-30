@@ -1,13 +1,17 @@
 test_that("spam_dataset works as expected", {
-  
-  dataset <- spam_dataset(download = TRUE)
-  
-  iter <- dataloader_make_iter(dataset)
-  batch <- dataloader_next(iter)
-  
-  expect_equal(dim(batch$x), c(32, 57))
-  
-  expect_equal(length(batch$y), 32)
-  
-  expect_true(all(as.array(batch$y) %in% c(0, 1)))
+  dataset <- tryCatch(
+    spam_dataset(download = TRUE),
+    error = function(e) {
+      if (grepl("cannot open URL|HTTP status|download.file", conditionMessage(e)))
+        skip(paste("Spam dataset download failed:", conditionMessage(e)))
+      stop(e)
+    }
+  )
+
+  expect_true(length(dataset) > 0)
+
+  item <- dataset[1]
+  expect_named(item, c("x", "y"))
+  expect_equal(length(item$x), 57)
+  expect_true(as.integer(item$y) %in% c(0, 1))
 })
